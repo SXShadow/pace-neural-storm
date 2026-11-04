@@ -7,7 +7,7 @@
 
 **Submission kit:** [start here](docs/START_HERE.md) · [current form answers](docs/FORM_ANSWERS.md) · [judge Q&A](docs/JUDGE_QA.md) · [screenshot guide](docs/screenshots/README.md).
 
-**Submission readiness:** see the [November 4 final checks and outstanding delivery steps](docs/READINESS.md). The local prototype is ready for participant review; public publication and event submission are still pending.
+**Delivery update, November 4:** the complete code is published in the public repository above. The Neural Storm dashboard confirmed the project submission, and the saved repository link remained visible after reload. Optional hosting and video are still pending. See the [earlier readiness checks](docs/READINESS.md) for scoped verification and limitations.
 
 **November 4 polish update:** 38 Python tests and 7 JavaScript tests pass. See the [detailed audit and remaining manual checks](docs/POLISH_REPORT.md) and [2½-minute Asha demo script](docs/ASHA_DEMO.md). The earlier November 3 results below are retained as historical evidence. Run JavaScript unit tests with **node --test tests/frontend.test.cjs** (Node is only needed for these developer tests). Code is available under the [MIT license](LICENSE).
 
@@ -161,11 +161,13 @@ See [accessibility and QA notes](docs/ACCESSIBILITY.md) for tested behaviour and
 
 [Deployment guide](docs/DEPLOYMENT.md) includes Render and Docker instructions. [Demo script](docs/DEMO_SCRIPT.md) and [submission text](docs/SUBMISSION.md) are ready for review.
 
-**Current delivery status:** working local app and documentation. A public GitHub repository, verified hosted URL, demo recording, and event submission remain to be completed. Do not submit a localhost URL.
+**Current delivery status:** public code repository and event submission confirmed on November 4. Downloaded the published source ZIP and verified all 52 files against the local submission source; all Python and JavaScript tests passed on that copy. A verified hosted URL and demo recording remain pending. The event form accepted the required repository URL with optional links blank.
 
 ## AI assistance and provenance
 
 Codex was used for implementation, original sample content drafting, interface illustrations, debugging, test development, evaluation and documentation. The solo participant is Swayam Bangad; AI assistance is disclosed rather than counted as a human team member. No other AI assistant or external runtime AI provider was used in the tested default path.
+
+During GitHub publication, GitHub's web editor also auto-suggested the message for one file-creation commit. That suggestion affected commit wording, not application implementation or runtime generation.
 
 Open-source libraries include FastAPI, Pydantic, scikit-learn, NumPy, SciPy, Uvicorn, httpx and pytest. The default implementation uses TF-IDF and Bayesian inference rather than a pretrained LLM. Visuals are code-native SVGs and CSS; no stock photos or generated raster assets are required.
 
