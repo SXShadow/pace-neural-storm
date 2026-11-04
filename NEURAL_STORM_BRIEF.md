@@ -2,6 +2,8 @@
 
 Recorded on October 31, 2026, from four rules screenshots supplied by the user. These are advance planning notes, not project implementation. Reconcile any later official updates with these notes and flag material changes to the user.
 
+**Verified organizer update, November 4, 2026:** the live rules at https://neuralstorm.dev/rules now state a November 2–5 build period of 72 hours and a submission deadline of November 5 at 8:00 PM IST. The signed-in dashboard also displays that deadline. This supersedes the original November 4 boundary below; retain the earlier screenshot-based records as historical provenance. The update was explained to the user and rechecked before the reviewer-note documentation change on November 4 at approximately 10:55 PM IST.
+
 ## Sources and precedence
 
 The supplied screenshots cover eligibility, hackathon rules, submission requirements, and scoring. They are the source of the event requirements below. Our proposed implementation and verification practices are separately identified.

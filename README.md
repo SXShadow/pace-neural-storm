@@ -7,6 +7,10 @@
 
 **Live demo:** [Open Pace](https://pace-neural-storm.onrender.com). No account or API key is needed. The free server sleeps with inactivity; a first visit may take around a minute to wake. Once loaded, start The water cycle.
 
+**For judges and reviewers:** Pace provides account-free access so you can evaluate sample lessons, paste your own English notes, change reading preferences and try adaptive practice immediately. No login, sign-up or evaluation credentials are required.
+
+When remembering progress is enabled, lessons, preferences and practice history are saved in the same browser. They do not sync across devices. Optional accounts with secure cross-device synchronization are future work.
+
 **Submission kit:** [start here](docs/START_HERE.md) · [current form answers](docs/FORM_ANSWERS.md) · [judge Q&A](docs/JUDGE_QA.md) · [screenshot guide](docs/screenshots/README.md).
 
 **Delivery update, November 4:** the complete code is published, the HTTPS demo is live, and the Neural Storm dashboard confirmed submission with both links saved. See [delivery verification](docs/DELIVERY_STATUS.md) and the [earlier readiness checks](docs/READINESS.md) for scoped evidence and limitations. No demo video has been recorded.
