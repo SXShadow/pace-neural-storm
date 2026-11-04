@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b5c51">
+  <meta name="description" content="Pace turns lessons into approachable steps, with accessible reading controls and practice that responds to you.">
+  <title>Pace · A little progress, at your own pace</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css?v=20261104">
+  <script src="/static/app.js?v=20261104" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#library" aria-label="Pace home"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M21 21C0 20 5 0 17 7c6 4 4 14 4 14Z"/><path d="M21 21C22 0 42 5 35 17c-4 6-14 4-14 4Z"/><path d="M21 21c21 1 16 21 4 14-6-4-4-14-4-14Z"/><path d="M21 21C20 42 0 37 7 25c4-6 14-4 14-4Z"/></svg><span>pace<span class="brand-dot">.</span></span></a>
+      <p class="brand-caption">A little space to learn.</p>
+      <p class="nav-label">YOUR SPACE</p>
+      <nav id="navigation">
+        <a href="#library" data-nav="library"><span data-icon="grid"></span>My learning space</a>
+        <a href="#progress" data-nav="progress"><span data-icon="chart"></span>My progress</a>
+        <button data-action="preferences"><span data-icon="sliders"></span>Learning preferences</button>
+        <button class="mobile-only" data-action="about" aria-label="About Pace and your data"><span data-icon="info"></span>About Pace and your data</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="small-steps"><span data-icon="sprout"></span><p>Small steps.<br><strong>Meaningful progress.</strong></p><span class="small-steps-line"></span></div>
+        <button class="about-link" data-action="about"><span data-icon="info"></span>About Pace & your data</button>
+        <div class="local-badge"><span class="status-dot"></span>No account needed</div>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><div class="mobile-brand">pace.</div><span class="topbar-location" id="location">Your learning space</span><div class="topbar-actions"><span class="quiet-message">Room to learn. Space to grow.</span><button class="icon-button" data-action="preferences" aria-label="Open learning preferences"><span data-icon="sliders"></span></button><span class="profile-avatar" aria-label="Your personal learning space">You</span></div></header>
+      <main id="main" tabindex="-1"><div class="initial-loading" role="status">Getting your learning space ready…</div></main>
+      <footer class="workspace-footer"><span>Made for different minds. Built around you.</span><span>Pace Lab · Neural Storm 2026</span></footer>
+    </div>
+  </div>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="preferences-dialog" aria-labelledby="preferences-title">
+    <div class="dialog-head"><div><span class="eyebrow">MAKE YOURSELF COMFORTABLE</span><h2 id="preferences-title">Your way of learning.</h2></div><button class="icon-button" data-close="preferences-dialog" aria-label="Close preferences"><span data-icon="close"></span></button></div>
+    <p class="muted">Choose what feels right. You can change these anytime.</p>
+    <div class="preference-field"><label for="font-size">Lesson text size <output id="font-size-value">18 px</output></label><input id="font-size" type="range" min="16" max="28" step="2"><div class="range-labels"><span>Smaller</span><span>Larger</span></div></div>
+    <div class="preference-field"><label for="line-spacing">Line spacing</label><select id="line-spacing"><option value="1.6">Comfortable</option><option value="1.9">Roomy</option><option value="2.2">Extra space</option></select></div>
+    <div class="preference-field"><label for="speech-rate">Read-aloud speed</label><select id="speech-rate"><option value="0.7">Slower · 0.7×</option><option value="0.85">Gentle · 0.85×</option><option value="1">Natural · 1×</option><option value="1.2">Faster · 1.2×</option></select></div>
+    <label class="toggle-row"><span><strong>One step at a time</strong><small>Break lesson explanations into smaller steps.</small></span><input type="checkbox" id="chunked"><span class="switch" aria-hidden="true"></span></label>
+    <label class="toggle-row"><span><strong>Stronger contrast</strong><small>Darker text and clearer borders.</small></span><input type="checkbox" id="contrast"><span class="switch" aria-hidden="true"></span></label>
+    <label class="toggle-row"><span><strong>Fewer distractions</strong><small>Hide the sidebar while you study.</small></span><input type="checkbox" id="focus-mode"><span class="switch" aria-hidden="true"></span></label>
+    <label class="toggle-row"><span><strong>Remember my progress</strong><small>Save lessons and answers in this browser only.</small></span><input type="checkbox" id="remember"><span class="switch" aria-hidden="true"></span></label>
+    <div class="reading-preview"><span class="eyebrow">A LITTLE PREVIEW</span><p>Every small step is a step forward. Find a rhythm that works for you.</p></div>
+    <button class="button primary full-width" data-close="preferences-dialog">That feels right <span data-icon="check"></span></button>
+  </dialog>
+  <dialog id="create-dialog" aria-labelledby="create-title">
+    <div class="dialog-head"><div><span class="eyebrow">BRING YOUR CURIOSITY</span><h2 id="create-title">Make it your lesson.</h2></div><button class="icon-button" data-close="create-dialog" aria-label="Close new lesson"><span data-icon="close"></span></button></div>
+    <p class="muted">Paste a short teaching passage. We'll find the key ideas and turn them into manageable steps.</p>
+    <form id="create-form">
+      <label for="lesson-title">Give your lesson a name</label><input type="text" id="lesson-title" maxlength="100" required placeholder="e.g. Understanding gravity">
+      <label for="lesson-source">Your lesson text <span class="field-hint">35+ words · English</span></label><textarea id="lesson-source" rows="8" maxlength="24000" required placeholder="Paste a few paragraphs from your notes or a lesson you have permission to use…"></textarea>
+      <div class="word-count"><span id="source-count">0 words</span><span>Up to 24,000 characters</span></div>
+      <div class="processing-note"><span data-icon="shield"></span><p><strong>Local processing, no AI account needed.</strong><br>Finds key sentences and creates source-word practice. Your text is processed by this app's Python server and isn't sent to an external AI service.</p></div>
+      <label id="remote-option" class="checkbox-row" hidden><input type="checkbox" id="use-remote"><span>Use cloud AI explanations instead. This sends the lesson text to the configured AI provider.</span></label>
+      <p id="create-error" class="error-message" role="alert" hidden></p>
+      <button class="button primary full-width" id="create-submit" type="submit"><span data-icon="sparkles"></span>Create my learning path</button>
+    </form>
+  </dialog>
+  <dialog id="about-dialog" aria-labelledby="about-title">
+    <div class="dialog-head"><div><span class="eyebrow">THOUGHTFULLY BUILT</span><h2 id="about-title">A little more about Pace.</h2></div><button class="icon-button" data-close="about-dialog" aria-label="Close about Pace"><span data-icon="close"></span></button></div>
+    <p>Pace is an experimental learning companion by <strong>Swayam Bangad · Pace Lab</strong>, built for Neural Storm 2026, HI-03.</p>
+    <h3>How learning adapts</h3><p>A Python Bayesian knowledge-tracing model updates a practice estimate from your answers. It recommends smaller steps after an incorrect answer and further practice or moving on after correct answers. Its parameters are illustrative and have not been calibrated on students. It never uses reading speed or infers a disability.</p>
+    <h3>Where the content comes from</h3><p>Sample lessons are original, prepared teaching passages. Your pasted lessons use local TF-IDF sentence ranking and word-recall questions. Optional cloud AI is used only when configured and explicitly selected. These modes are labelled in the reader.</p>
+    <h3>Your data stays under your control</h3><p>When remembering progress is enabled, lesson text, answers and preferences are saved in this browser. Lesson processing happens on the app server, which doesn't keep a lesson database. Cloud mode sends lesson text to its configured provider. Browser narration may use device or browser voice services. No diagnosis, camera or microphone is needed.</p>
+    <h3>Built with accessibility in mind</h3><p>Keyboard navigation, adjustable lesson text, optional narration and clear feedback are part of the design. Accessibility and educational effectiveness need ongoing testing with intended users. A quiz estimate is not a diagnosis or proof of mastery.</p>
+    <div class="dialog-actions"><button class="button secondary" data-action="export">Export my progress <span data-icon="download"></span></button><button class="button danger" data-action="clear-data">Clear saved data</button></div>
+  </dialog>
+  <dialog id="clear-dialog" aria-labelledby="clear-title"><h2 id="clear-title">Clear this browser's data?</h2><p>This removes your saved lessons, preferences and practice history from this browser. You can export your progress first.</p><div class="dialog-actions"><button class="button secondary" data-close="clear-dialog">Keep my data</button><button class="button danger" data-action="confirm-clear">Clear my data</button></div></dialog>
+  <noscript><p class="noscript">Pace needs JavaScript for lessons and accessibility controls. Please enable it to use the app.</p></noscript>
+</body>
+</html>
