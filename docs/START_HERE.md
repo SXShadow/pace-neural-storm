@@ -1,5 +1,7 @@
 # Pace submission kit — start here
 
+**Delivery completed:** [public code, hosted demo and dashboard submission are confirmed](DELIVERY_STATUS.md). The checklist below was prepared before publication; its pending-status entries are historical. Current registered participant/team: Swayam Bangad (solo). Pace Lab is the project label.
+
 Prepared November 4, 2026 during the implementation window. Deadline from the supplied event rules: **today at 8:00 PM IST**. This kit is prepared locally; the entry is not submitted yet.
 
 **Project:** Pace — A little progress, at your own pace  

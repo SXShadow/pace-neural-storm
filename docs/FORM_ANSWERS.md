@@ -1,5 +1,7 @@
 # Pace — current form answers
 
+**Verified delivery links:** public repository https://github.com/SXShadow/pace-neural-storm · live demo https://pace-neural-storm.onrender.com. Both are saved in the confirmed event entry; no video link exists. The hypothetical field guidance below was prepared before publication.
+
 Copy only the answer beneath the matching field. These are prepared answers, not a claim that every field appears on the dashboard. Respect the actual form's character limits. Repository/demo/video link fields must use real verified public URLs; those links are currently pending.
 
 ## Project title

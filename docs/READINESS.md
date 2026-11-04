@@ -1,5 +1,7 @@
 # Submission readiness — November 4, 2026
 
+**Later delivery update:** [DELIVERY_STATUS.md](DELIVERY_STATUS.md) confirms public publication, the hosted demo and saved event submission. Pending external steps below describe the earlier audit state and are retained as historical records.
+
 Verdict: the local prototype is ready for participant acceptance testing and preparation for publication. The hackathon submission is **not complete**. No claim of perfection, accessibility certification, proven learning outcomes, or guaranteed prizes is made.
 
 This follow-up supplements POLISH_REPORT.md. Earlier observations remain historical records; the checks below resolve some items previously marked unverified. No application code changed during this readiness pass.

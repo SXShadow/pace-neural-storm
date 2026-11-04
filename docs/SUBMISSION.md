@@ -1,5 +1,7 @@
 # Submission preparation
 
+**Final delivery:** the public [repository](https://github.com/SXShadow/pace-neural-storm) and tested [demo](https://pace-neural-storm.onrender.com) have been saved in the event submission. See [delivery verification](DELIVERY_STATUS.md). Earlier checklist states below are retained for provenance. Registered participant/team: Swayam Bangad (solo).
+
 **Use for the final form:** [FORM_ANSWERS.md](FORM_ANSWERS.md) contains current copy-ready answers and scoped results. [START_HERE.md](START_HERE.md) maps every supplied requirement to evidence and the remaining external actions. The earlier 28-test paragraph below is historical.
 
 **November 4 readiness update:** 38 Python tests and seven JavaScript tests pass. All three prepared lessons were completed during QA; the water-cycle flow was additionally completed using only the keyboard. The 28-test evidence below is the earlier November 3 record. See [current readiness and pending delivery gates](READINESS.md) before copying final submission text. Public repository, hosted demo and event submission are still pending.
