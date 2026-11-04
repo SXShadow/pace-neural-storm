@@ -1,6 +1,6 @@
 # Accessibility and browser verification
 
-November 4 update: see [POLISH_REPORT.md](POLISH_REPORT.md) for the newer checks, corrections, 320–1600 px measurements, and remaining manual checks. The original November 3 record below is preserved.
+November 4 update: see [POLISH_REPORT.md](POLISH_REPORT.md) for newer checks, corrections, 320–1600 px measurements and remaining manual checks; [READINESS.md](READINESS.md) records the keyboard-only journey. [DELIVERY_STATUS.md](DELIVERY_STATUS.md) supersedes the historical hosted-deployment limitation below. The original November 3 record is preserved.
 
 Recorded November 3, 2026. This is a scoped engineering check, not a WCAG conformance audit or a study with disabled learners.
 

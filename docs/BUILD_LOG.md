@@ -1,5 +1,21 @@
 # Development record
 
+## README editorial details moved during documentation review
+
+The former README header contained delivery/polish updates and a submission-kit navigation line. Current delivery is documented in [DELIVERY_STATUS.md](DELIVERY_STATUS.md), QA in [POLISH_REPORT.md](POLISH_REPORT.md), and submission material in [START_HERE.md](START_HERE.md). On November 4 the event dashboard confirmed participant and registered team Swayam Bangad; Pace Lab is the project label. Earlier planning records retain the initially supplied spelling and dates. The consolidated [demo script](DEMO_SCRIPT.md) now combines the Asha story and the useful preparation/fallback details from the older script.
+
+## Historical validation copied from the earlier README
+
+Recorded November 3, 2026:
+
+- 28 automated tests passed, with one upstream Starlette/httpx deprecation warning.
+- Python package dependency check and JavaScript syntax check passed.
+- Browser checks covered lesson creation, wrong/correct practice, distinct follow-up, all four water-cycle concepts, summary, persistence, preferences, skip link, source disclosure and a downloaded JSON export.
+- Responsive library and reader checks at 390 px showed no page-level horizontal overflow after a reader grid fix.
+- No console errors or warnings appeared in the inspected browser logs.
+
+The newer 38 Python + seven JavaScript results supersede that historical count. The following entries retain their actual development/delivery context.
+
 November 4, 2026, delivery verification: complete source published publicly at https://github.com/SXShadow/pace-neural-storm; downloaded the publication snapshot and matched all 52 files; its 38 Python and seven JavaScript tests passed. Deployed the Python app on Render Free, verified live generation and practice, then saved https://pace-neural-storm.onrender.com in the confirmed event submission. Later current delivery details are in DELIVERY_STATUS.md; earlier pending statements below describe their preparation time. Final dashboard deadline label showed November 5 at 8 PM IST, unlike the original rules; the submission was already saved on November 4.
 
 November 4, 2026, publication: the user explicitly authorized GitHub publication, deployment and final event submission. Signed-in event dashboard confirmed registration for Human Impact HI-03, participant Swayam Bangad and registered team Swayam Bangad. Corrected current README, license, form answers and app attribution to that verified spelling; Pace Lab remains the project label. Earlier supplied-name records are retained with their original provenance. Created public repository SXShadow/pace-neural-storm; code upload and submission must be verified separately.

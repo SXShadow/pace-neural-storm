@@ -1,12 +1,12 @@
 # Optional six-part presentation outline
 
-The supplied rules do not require a PPT. Use the working demo and ASHA_DEMO.md first. This is a concise outline for spoken presentation or slides if the dashboard or judges ask for them; it is not a completed slide deck.
+The supplied rules do not require a PPT. Use the working demo and [DEMO_SCRIPT.md](DEMO_SCRIPT.md) first. This is a concise outline for spoken presentation or slides if the dashboard or judges ask for them; it is not a completed slide deck.
 
 ## 1 — Pace
 
 **A little progress, at your own pace**  
 Human Impact · HI-03  
-Swayam Banagd · Pace Lab
+Swayam Bangad (solo) · Pace Lab project label
 
 Visual: learning library screenshot.
 

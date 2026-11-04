@@ -1,56 +1,56 @@
-# Pace demonstration
+# Pace demonstration — Asha's water-cycle story
 
-**Final recording version:** use [ASHA_DEMO.md](ASHA_DEMO.md), which uses the current 38 Python + seven JavaScript test results. This earlier script is retained as a planning record. For the clearest adaptation demonstration, change text size/spacing but leave smaller steps off until the first incorrect answer.
+Asha is a fictional learner used to explain the interaction. Do not present her as a tested participant or claim the app improved her learning.
 
-Suggested length: about three minutes. This is our presentation plan, not an organizer-imposed video limit. The supplied rules accept a live or video demonstration; they do not require a PPT.
+## 0:00–0:20 — Start
 
-## Before recording
+“I’m Swayam from Pace Lab. Meet Asha, a fictional student who finds dense written lessons difficult to work through. Pace gives her control over the reading format and a clear next step when a concept needs another look.”
 
-Start the server, check audio if demonstrating narration, and use a fresh browser session so sample questions are unanswered. Keep the window readable and record actual actions. Do not include API keys, personal student data or unrelated tabs.
+Show the library. Open The water cycle in one click.
 
-## 0:00–0:25 — Problem and promise
+## 0:20–0:45 — Learner choice
 
-Say: “I’m Swayam Banagd from Pace Lab. Pace is my HI-03 project for Neural Storm. A lesson can be correct and still be difficult to access. Pace lets students choose a comfortable format and adjusts practice when an idea needs another look.”
+“Asha chooses larger text and more spacing. She can use a keyboard and optional narration. Pace asks what helps her; it doesn't infer a disability.”
 
-Show the learning library. Briefly mention that the default app needs no AI account.
+Change text size and spacing. Leave One step at a time off initially so the incorrect answer can visibly change the presentation. Briefly demonstrate read aloud only if you verified audible output on the recording device.
 
-## 0:25–0:55 — Learner control
+## 0:45–1:25 — The important moment
 
-Open The water cycle. In Preferences, increase text size and spacing. Show smaller steps or focus mode. If narration works on the recording device, start and stop it briefly.
+“Asha chooses condensation for a puddle drying. Pace responds kindly, breaks the explanation into steps and offers a different question.”
 
-Say: “The learner chooses what helps. Pace never infers a disability or treats slow reading as failure. There are no timers.”
+Select Condensation for the evaporation question. Show the smaller-step banner. Expand Why this next step? Open View source.
 
-## 0:55–1:40 — The central demonstration
+“The recommendation comes from a Python Bayesian practice estimate. It is illustrative, not a diagnosis or a validated mastery score. Asha can always continue manually.”
 
-On evaporation, choose Condensation, then Check my understanding. Show the smaller-step banner and explanation. Open “Why this next step?” and “View source.” Choose Try a follow-up; answer A gas.
+Select Try a follow-up, then A gas.
 
-Say: “The incorrect answer changes the next activity. A Python Bayesian model updates a practice estimate. Pace explains its recommendation, offers a different question, and keeps the learner free to move on.”
+## 1:25–1:55 — Her own notes
 
-Explain that the parameters are illustrative, not a validated measure of mastery.
+“Pace also works with Asha's own English teaching passage. The default mode uses local text analysis: it extracts source sentences and creates word-recall practice without an API key.”
 
-## 1:40–2:15 — Real input
+Paste the original gravity passage from demo-input.txt. Show the Local text analysis label and source quote. Do not call this AI-generated.
 
-Use Add a lesson. Paste the gravity passage below and create a learning path. Show the Local NLP label and an original source quote.
+## 1:55–2:15 — Progress and evidence
 
-Say: “This is new input processed by scikit-learn TF-IDF. Local mode extracts relevant sentences and creates word-recall practice. Prepared samples and generated lessons are labelled separately.”
+“Asha can revisit a concept, return later and export her practice record. Our current checks include 38 Python tests, 7 JavaScript tests, and browser walkthroughs of all three lessons.”
 
-## 2:15–2:40 — Evidence and implementation
+Show My progress and the audit report briefly. Explain that browser/accessibility checks are scoped and no learning-outcome study has been performed.
 
-Show My progress and the README results. Mention 28 passing tests, the source-fidelity checks, and adjustable reading with keyboard controls.
+## 2:15–2:30 — Close
 
-Say: “The functional checks show that these examples stay grounded in their input. They do not yet prove improved learning. The next step is evaluation with students and accessibility specialists.”
+“Pace connects learner-controlled presentation, visible sources and explainable practice recommendations. My next step is testing with intended learners and accessibility specialists.”
 
-## 2:40–3:00 — Close
+Show the [public repository](https://github.com/SXShadow/pace-neural-storm) and [live demo](https://pace-neural-storm.onrender.com). A PPT is optional; the working interaction is the main evidence.
 
-Show the public repository and hosted demo once available.
+## Before presenting or recording
 
-Say: “Pace connects learner control, source-visible content, and explainable adaptation in one working flow. Built in Python for AI components, with Codex assistance disclosed in the README.”
+Use a fresh/private browser session so questions are unanswered. Increase text size and spacing but leave smaller steps off until the wrong answer. Check audio before demonstrating narration, keep the screen readable, and keep personal data and unrelated tabs out of the capture. This is a suggested 2½-minute presentation, not an organizer-imposed length limit.
 
-## Original passage for live input
+## Original input
 
-Gravity is a force of attraction between objects that have mass. Earth pulls objects toward its centre. The Moon also has gravity, but its surface gravity is weaker than Earth's. Mass is the amount of matter in an object. Weight is the force of gravity acting on an object. An astronaut has the same mass on the Moon but weighs less there. Air resistance opposes movement through air. A parachute increases air resistance and slows a falling person.
+Use [demo-input.txt](demo-input.txt), the original gravity passage preserved from the earlier script. Its eight sentences cover gravity, mass, weight and air resistance. Show the Local text analysis label and an original quote after creating the lesson.
 
-## Recording fallback
+## If hosting is unavailable
 
-If hosting is temporarily unavailable, demonstrate the actual local server and say it is local. Do not represent a mockup, prepared screenshot, or prewritten sample as live AI generation. Keep the recording available even if presenting live.
+Demonstrate the actual local Python server and identify it as local. Prepared examples and pasted-input processing must remain clearly distinguished. Show actual interactions rather than presenting screenshots as live generation.
 

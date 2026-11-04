@@ -22,11 +22,11 @@ Render Free instances sleep after inactivity. Render's dashboard warns that waki
 
 ## Evidence and provenance
 
-At the final dashboard check on November 4, the deadline label displayed **November 5, 2026 at 8:00 PM IST**, differing from the November 4 deadline in the earlier supplied rules. Both saved links and the submitted confirmation were visible together. This is an observed dashboard update, not confirmation that the implementation window or all published rules were extended. The entry was already submitted on November 4.
+At the final dashboard check on November 4, the deadline label displayed **November 5, 2026 at 8:00 PM IST**, differing from the earlier supplied rules. The live [official rules](https://neuralstorm.dev/rules) were subsequently checked and stated the same deadline and a 72-hour build period. [NEURAL_STORM_BRIEF.md](NEURAL_STORM_BRIEF.md) records that update. Both saved links and the submitted confirmation were visible together; the entry was already submitted on November 4.
 
 Local confirmation screenshots and a machine-readable record are saved in outputs/submission-evidence. They are excluded from the public source package because the account dashboard is not a public project asset. Earlier readiness, submission and build notes describe the state when written; this file supersedes their pending-publication/deployment status. The user's earlier name spelling is preserved in those historical records. Current attribution matches the signed-in registration dashboard.
 
-Codex assisted with the application and supporting material. GitHub's web editor auto-suggested one commit message during publication. The optional cloud AI adapter was not used for the tested runtime.
+Codex assisted with the application and supporting material. The optional cloud AI adapter was not used for the tested runtime.
 
 ## Remaining limits
 

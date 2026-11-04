@@ -1,80 +1,40 @@
-# Pace submission kit — start here
+# Pace — reviewer and submission guide
 
-**Delivery completed:** [public code, hosted demo and dashboard submission are confirmed](DELIVERY_STATUS.md). The checklist below was prepared before publication; its pending-status entries are historical. Current registered participant/team: Swayam Bangad (solo). Pace Lab is the project label.
+**Live demo:** https://pace-neural-storm.onrender.com<br>
+**Public source:** https://github.com/SXShadow/pace-neural-storm<br>
+**Registered participant/team:** Swayam Bangad (solo) · **Project label:** Pace Lab<br>
+**Track:** Human Impact · HI-03 · Neural Storm 2026
 
-Prepared November 4, 2026 during the implementation window. Deadline from the supplied event rules: **today at 8:00 PM IST**. This kit is prepared locally; the entry is not submitted yet.
+[All documentation and evidence](README.md)
 
-**Project:** Pace — A little progress, at your own pace  
-**Track:** Human Impact  
-**Problem:** HI-03 — Adaptive Learning for Students with Disabilities  
-**Team:** Pace Lab (solo)  
-**Participant:** Swayam Banagd — spelling supplied by the participant; check against registration.
+## Review the project
 
-## Use these files
+1. Follow [Try it in three minutes](../README.md#try-it-in-three-minutes).
+2. Use the [consolidated Asha presentation script](DEMO_SCRIPT.md) and [original input](demo-input.txt).
+3. Inspect [test and browser evidence](READINESS.md), [detailed polish checks](POLISH_REPORT.md), [source-fidelity results](evaluation.json) and [hosted verification](DELIVERY_STATUS.md).
+4. Consult [judge Q&A](JUDGE_QA.md), [submission answers](FORM_ANSWERS.md) or the [optional pitch outline](PITCH_OUTLINE.md).
 
-| Need | Ready material |
+TODO: add demo video link here once recorded.
+
+## Submission and rules
+
+The entry is already saved with the repository and live demo URLs. The later [official-rule update](NEURAL_STORM_BRIEF.md) extends the build/submission window to **November 5, 2026 at 8:00 PM IST**. The earlier screenshot deadline was November 4. One entry per team can be updated by resubmission before the deadline.
+
+The recorded rules do **not explicitly address repository edits after the submission deadline**. Do not assume they are allowed; seek organizer clarification before making post-deadline public changes. This documentation revision is local and before the extended deadline.
+
+## Required material and evidence
+
+| Requirement | Where to inspect it |
 | --- | --- |
-| Repository landing page and installation | [README](../README.md) |
-| Paste into the event form | [Current form answers](FORM_ANSWERS.md) |
-| 2½-minute demonstration | [Asha script](ASHA_DEMO.md) |
-| Passage to paste during the demo | [Original gravity passage](demo-input.txt) |
-| Judge questions and technical explanation | [Judge Q&A](JUDGE_QA.md) |
-| Optional slides or spoken pitch | [Six-part pitch outline](PITCH_OUTLINE.md) |
-| Six screenshot choices | [Screenshot guide](screenshots/README.md) |
-| Actual results | [Evaluation JSON](evaluation.json), [polish audit](POLISH_REPORT.md), [readiness follow-up](READINESS.md) |
-| Hosting setup | [Deployment instructions](DEPLOYMENT.md), [Render configuration](../render.yaml) |
-| License and AI disclosure | [MIT license](../LICENSE), [README disclosure](../README.md#ai-assistance-and-provenance) |
+| Public complete source | Repository above; app, static, tests and scripts directories |
+| Title, participant, team and problem | [README](../README.md) and [delivery record](DELIVERY_STATUS.md) |
+| Problem, approach, stack and setup | [README](../README.md) |
+| Screenshots | [Capture guide](screenshots/README.md) |
+| Actual performance/testing evidence | [Validation](../README.md#validation), [evaluation JSON](evaluation.json) |
+| AI-assistance disclosure | [README disclosure](../README.md#ai-assistance-and-provenance) |
+| Published rules and provenance | [Event brief](NEURAL_STORM_BRIEF.md), [development log](BUILD_LOG.md) |
+| Optional deployment | Live URL above; [reproduction instructions](DEPLOYMENT.md) |
 
-## Check every published requirement
+## Before any further public update
 
-The source is the user's four rules screenshots, transcribed in [the event brief](../NEURAL_STORM_BRIEF.md). A later dashboard instruction may add fields; use the exact labels and limits shown there.
-
-| Requirement from the supplied rules | Evidence / remaining action |
-| --- | --- |
-| College enrollment; team of 1–3; registration before start | Participant confirmed college enrollment and solo registration |
-| One official track | Human Impact, HI-03 |
-| Build during November 2, 8 PM–November 4, 8 PM IST | [Development log](BUILD_LOG.md) preserves actual provenance |
-| Python primary for AI/ML | app/nlp.py and app/adaptation.py |
-| AI assistants allowed; disclose in README | Codex use disclosed |
-| Complete code in a public GitHub repository | Local package ready; **public repository still pending** |
-| README: title and problem number | Present |
-| README: team and member names | Present; check participant spelling |
-| README: problem and approach | Present |
-| README: stack and libraries | Present |
-| README: setup and local run instructions | Present; fresh dependency installation tested |
-| README: screenshots or demo GIF | Screenshots present; a GIF is not additionally required |
-| README: performance/accuracy where applicable | Actual source-fidelity checks, measured timings and test results; no invented accuracy |
-| README: AI tools | Present |
-| Live or video demonstration contributes to judging | Working local app and script ready; record/rehearse |
-| Deployment link | Optional, strongly recommended; still pending |
-| One submission via logged-in dashboard Submit tab | **Still pending**; resubmission permitted before deadline |
-| PPT / PDF / poster | No requirement for these in the supplied rules |
-
-## Final actions in order
-
-1. Finish the short user check: wrong answer → smaller steps → follow-up; preferences/reload; own notes. Confirm the participant name.
-2. Publish the reviewed source package as a **public GitHub repository**. Include the complete app, not only screenshots or a ZIP. Open the repository while signed out and verify README images load. Publishing still requires the participant's authorization.
-3. If time allows, deploy the default local-NLP app, verify its HTTPS URL and test one sample and one pasted lesson. Hosting is optional; a missing optional host should not delay a valid required submission.
-4. Use FORM_ANSWERS.md. Put the real public repository URL in the required link field. Add only actual, tested demo/video URLs. Leave optional unavailable URL fields blank; do not paste “pending” or localhost.
-5. Submit before 8 PM IST, verify the saved values and retain the confirmation. Aim to leave at least 10 minutes for dashboard/login problems. Submission time matters only after technical-score ties, under the supplied rules.
-6. If improving an already valid entry, follow the dashboard's resubmission flow before the deadline. Do not assume resubmission preserves the original tiebreak timestamp.
-
-## Record the demo quickly
-
-- Use a fresh/private session so the first sample question is unanswered. Keep existing personal progress untouched.
-- Set larger text and spacing, but leave **One step at a time off initially** so the wrong answer visibly changes the presentation.
-- Record real interactions with the Asha script. Asha is a fictional scenario, not a research participant.
-- Use narration only if you have checked the audio on the recording device. Otherwise explain it briefly while showing the text.
-- Default mode needs no API key. Do not switch on untested cloud generation for the final demo.
-- If demonstrating the local app, identify it as local. Check recording playback and any sharing permissions before submitting a video link.
-
-## External links to fill after verification
-
-| Field | Current status |
-| --- | --- |
-| Public repository | Not yet published |
-| Hosted demo | Not yet deployed |
-| Video | Not yet recorded |
-| Submission confirmation | Not yet submitted |
-
-The AI assistant has not published, deployed or submitted this kit. The source package excludes virtual environments, logs, backups and private progress exports.
+Review the README before publishing changes. Keep the existing submission intact. If a link changes, verify it before updating the event form; do not replace a valid URL with a placeholder. Documentation publication follows participant approval and does not require an application deployment.

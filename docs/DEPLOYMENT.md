@@ -6,7 +6,7 @@ Pace needs a Python server. A static-only host cannot run the lesson generation 
 
 No API key is needed. Leave PACE_ALLOW_REMOTE_AI=false. This avoids provider costs and makes the entire judging flow available with the default app.
 
-The included Render Blueprint explicitly selects the free service plan. Verify the plan shown in the dashboard before creating a service; hosting offers can change. The app has not yet been deployed or load-tested on Render. Allow time for startup before recording or judging.
+The included Render Blueprint explicitly selects the free service plan. Verify the plan shown in the dashboard before creating a service; hosting offers can change. The existing HTTPS deployment and learner flow were verified on November 4; [DELIVERY_STATUS.md](DELIVERY_STATUS.md) records those checks. Hosted load testing remains unverified. Allow time for the free server to wake after inactivity.
 
 1. Publish the project in a public GitHub repository after reviewing its contents. Include app, static, tests, scripts, docs, README, requirements files, Dockerfile, render.yaml and pyproject.toml. Keep the dated planning records if included; their provenance is explicit.
 2. Exclude .venv, .env, caches, local logs, and downloaded personal progress records. Review the repository before making it public. No credentials are required for the default app.
