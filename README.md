@@ -1,47 +1,97 @@
 # Pace · A little progress, at your own pace
 
-**Neural Storm 2026 · Human Impact · HI-03: Adaptive Learning for Students with Disabilities**  
-**Registered team:** Swayam Bangad (solo) · **Participant:** Swayam Bangad · **Project label:** Pace Lab
+Pace lets learners choose a comfortable reading format and responds to practice answers with smaller steps, visible sources and an explained next step.
 
-**Public repository:** [SXShadow/pace-neural-storm](https://github.com/SXShadow/pace-neural-storm). Participant and registered team names were verified against the event dashboard on November 4; earlier planning records retain the spelling originally supplied.
+[![MIT license](docs/badges/license.svg)](LICENSE) [![Python 3.12](docs/badges/python.svg)](#run-locally) [![38 Python and 7 JavaScript tests passing](docs/badges/tests.svg)](#validation)
 
-**Live demo:** [Open Pace](https://pace-neural-storm.onrender.com). No account or API key is needed. The free server sleeps with inactivity; a first visit may take around a minute to wake. Once loaded, start The water cycle.
+**[Live demo → Open Pace](https://pace-neural-storm.onrender.com)**<br>
+Free hosting: the first load may take about a minute to wake, which is normal.
 
-**For judges and reviewers:** Pace provides account-free access so you can evaluate sample lessons, paste your own English notes, change reading preferences and try adaptive practice immediately. No login, sign-up or evaluation credentials are required.
+**Swayam Bangad (solo) · HI-03 Adaptive Learning for Students with Disabilities · Neural Storm 2026**
 
-When remembering progress is enabled, lessons, preferences and practice history are saved in the same browser. They do not sync across devices. Optional accounts with secure cross-device synchronization are future work.
+![Pace learning library with a start action, three science lessons and reading preferences](docs/screenshots/library.jpg)
 
-**Submission kit:** [start here](docs/START_HERE.md) · [current form answers](docs/FORM_ANSWERS.md) · [judge Q&A](docs/JUDGE_QA.md) · [screenshot guide](docs/screenshots/README.md).
+**Tech stack:** FastAPI · scikit-learn TF-IDF · Bayesian Knowledge Tracing · vanilla JS · Render (Docker config included, untested)
 
-**Delivery update, November 4:** the complete code is published, the HTTPS demo is live, and the Neural Storm dashboard confirmed submission with both links saved. See [delivery verification](docs/DELIVERY_STATUS.md) and the [earlier readiness checks](docs/READINESS.md) for scoped evidence and limitations. No demo video has been recorded.
+[Documentation and evidence index](docs/README.md)
 
-**November 4 polish update:** 38 Python tests and 7 JavaScript tests pass. See the [detailed audit and remaining manual checks](docs/POLISH_REPORT.md) and [2½-minute Asha demo script](docs/ASHA_DEMO.md). The earlier November 3 results below are retained as historical evidence. Run JavaScript unit tests with **node --test tests/frontend.test.cjs** (Node is only needed for these developer tests). Code is available under the [MIT license](LICENSE).
+## Contents
 
-Pace is a learning companion that turns a short lesson into a manageable path, lets learners control its presentation, and responds to practice answers with smaller steps or a recommendation to move forward. The complete default experience runs without an AI account, API key, model download, or paid service.
+- [Why Pace](#why-pace)
+- [Try it in three minutes](#try-it-in-three-minutes)
+- [Why not just an LLM?](#why-not-just-an-llm)
+- [How practice adapts](#how-practice-adapts)
+- [Run locally](#run-locally)
+- [Project structure](#project-structure)
+- [Validation](#validation)
+- [Screenshot gallery](#screenshot-gallery)
+- [Data and privacy](#data-and-privacy)
+- [Future work](#future-work)
+- [AI assistance and provenance](#ai-assistance-and-provenance)
 
-![Pace learning library](docs/screenshots/library.jpg)
+## Why Pace
 
-## The problem and our approach
+Dense, fixed-format lessons can create access barriers for some learners.
 
-A dense lesson, fixed presentation, and timed questions can create barriers for learners who need a different reading format or interaction pace. Pace focuses on adjustable reading and keyboard interaction for students with reading, attention, visual, or motor access needs. Learners choose preferences directly; the app does not infer or ask for a diagnosis.
+Asha is a fictional learner working through the water cycle. She chooses larger text and more spacing.<br>
+When she answers “Condensation” for a drying puddle, Pace shows the explanation in smaller steps.<br>
+She checks the original source, reads why the next activity was suggested, and tries a different question.<br>
+She can also continue manually; there is no timer or reading-speed score.
 
-The key interaction is visible: answer a question incorrectly, see the explanation broken into smaller steps, read the source, then try a different question. The learner remains free to move on or revisit a concept. This is a prototype for supported practice, not a validated assessment or a claim to support every disability.
+| Access barrier | What Pace provides | Evidence boundary |
+| --- | --- | --- |
+| A long passage feels difficult to work through | One concept at a time, optional smaller steps and extractive processing of pasted English notes | Local NLP keeps source wording; it does not rewrite difficult vocabulary |
+| Losing track of the lesson | A concept outline, revisit controls and browser-saved practice when enabled | No account synchronization |
+| Small text or poor contrast | 16–28 px lesson text, three spacing settings and stronger contrast | A complete contrast/zoom audit remains pending |
+| Difficulty using a mouse | Native buttons, radio groups, skip link and keyboard focus management | A water-cycle keyboard journey was completed; switch access was not tested |
+| Screen-reader use | Semantic headings/landmarks, labelled controls and a live feedback region | VoiceOver/NVDA spoken output remains unverified |
+| Cannot hear narration | Explanations, sources, questions and feedback remain visible as text | Narration is optional; text and practice do not depend on audio |
+
+This is a prototype of supported practice, not a validated assessment or a clinical tool.
 
 ## Try it in three minutes
 
-1. Open **The water cycle** from the learning space.
-2. Use **Preferences** to change text size, line spacing, contrast, or focus mode.
-3. Answer the evaporation question incorrectly. Pace shows smaller steps and explains its recommendation.
-4. Select **Try a follow-up** and answer the new question.
-5. Open **View source** to check the original passage.
-6. Add a lesson using your own English teaching passage (35+ words and at least two sentences).
-7. Visit **My progress** or finish the lesson to see an honest practice record. Export it as JSON.
+No login, sign-up or evaluation credentials are required.
 
-There is no countdown, speed scoring, sign-up, camera, or microphone. The sample lessons contain original prepared explanations; they are clearly labelled. New pasted lessons are processed by the Python NLP pipeline.
+1. Open **The water cycle**. In **Preferences**, increase text size or spacing; leave smaller steps off initially.
+2. For the drying-puddle question, choose **Condensation**, then **Check my understanding**.
+3. Notice the smaller-step explanation. Open **Why this next step?** and **View source**.
+4. Select **Try a follow-up**, then answer **A gas**. You can always continue manually.
+5. Use **Add a lesson** with your own English passage: at least 35 words, two complete sentences and no more than 24,000 characters.
+6. Open **My progress**, revisit a concept or export the practice record as JSON.
+
+Three prepared science lessons are available immediately. Pasted lessons are labelled **Local text analysis**, keeping them distinct from prepared content and optional cloud generation.
+
+## Why not just an LLM?
+
+The default design needs no API key, model download or paid model service. It extracts representative source sentences and creates source-word recall practice on the app's Python server; student text is not sent to a third-party AI by default. Practice recommendations have an inspectable reason, and the learner can inspect the original source or choose another pace. An optional cloud-AI adapter exists for richer rewritten explanations, but it is **verified only with mocked tests**; a live provider call and its teaching quality remain unverified. Source-word recall can have weak distractors, so teacher review is still needed.
+
+## How practice adapts
+
+An incorrect answer requests smaller steps; correct answers request reinforcement or a recommendation to advance. The learner remains in control.
+
+<details>
+<summary>Bayesian update, parameters and worked example</summary>
+
+For each concept, the prior is **p = 0.20**, guess **g = 0.25**, slip **s = 0.10**, learning transition **t = 0.15**, and advance threshold **0.80**.
+
+~~~text
+Correct:   posterior = p(1-s) / [p(1-s) + (1-p)g]
+Incorrect: posterior = ps / [ps + (1-p)(1-g)]
+next_p = posterior + (1-posterior)t
+~~~
+
+The actual [adaptation code](app/adaptation.py) uses **round(..., 4)**: it rounds to four decimal places rather than truncating. Recomputed with that code, two correct answers from the prior give **0.5526 → 0.8439**, recommending **reinforce → advance**. An incorrect answer followed by a correct answer gives **0.1774 → 0.5215**.
+
+After each answer, the updated probability is rounded to four decimal places, and that rounded probability is used as the prior for the next answer.
+
+The hand-selected parameters are uncalibrated. A fixed guess rate simplifies questions with differing option counts and difficulty. The estimate is neither an ability percentage nor proof of mastery. Each question is scored once per saved session.
+
+</details>
 
 ## Run locally
 
-Requires **Python 3.12** and a modern browser. Tested with Python 3.12.14 on macOS arm64. Node.js is not required to run or build the app.
+Requires **Python 3.12** and a modern browser. The documented installation was tested with Python 3.12.14 on macOS arm64. Node is needed only for JavaScript developer tests.
 
 ~~~sh
 python3 -m venv .venv
@@ -50,142 +100,96 @@ python -m pip install -r requirements.lock
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ~~~
 
-Open **http://127.0.0.1:8000**. On Windows, activate with **.venv\Scripts\activate**. No .env file is needed for the default experience.
-
-For development, append **--reload** to the server command. The preview used during development runs on port 8765.
-
-### Tests and reproducible evaluation
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000). On Windows, activate with **.venv\Scripts\activate**. No .env file is needed for the default experience. Use the lockfile for the verified versions.
 
 ~~~sh
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
+node --test tests/frontend.test.cjs
 python -m scripts.evaluate
 ~~~
 
-The evaluation rewrites [docs/evaluation.json](docs/evaluation.json) with the actual run timestamp, environment, timings, source-fidelity checks, and adaptation sequences.
+The last command rewrites [the evaluation report](docs/evaluation.json) with its actual timestamp and results. [Deployment instructions](docs/DEPLOYMENT.md) cover the Python service and optional Docker path.
 
-## What works
+## Project structure
 
-| Capability | Implementation |
+~~~text
+app/                  Python APIs, local NLP, prepared lessons and adaptation
+static/               Browser library, reader, preferences and practice
+tests/                Python and JavaScript regression tests
+scripts/evaluate.py   Reproducible local source-fidelity evaluation
+docs/                 Evidence, rules, demo script and screenshots
+requirements.lock     Verified runtime dependency versions
+Dockerfile            Optional container configuration; not run
+render.yaml           Render deployment configuration
+~~~
+
+## Validation
+
+**Current local suite: 38 Python + 7 JavaScript tests pass**, as of November 4, 2026. One upstream Starlette/httpx deprecation warning remains.
+
+| Check | Recorded result |
 | --- | --- |
-| Accessible reading controls | 16–28 px lesson text, three line-spacing settings, high contrast, smaller steps, reduced-distraction view |
-| Keyboard interaction | Skip link, semantic controls, native dialogs, radio question groups, focus after feedback and navigation |
-| Optional narration | Browser speech synthesis with speed control and stop; text remains available |
-| Personal lessons | English passage processing with TF-IDF ranking, extractive explanations, source quotes, word-recall questions |
-| Adaptive practice | Python Bayesian Knowledge Tracing updates a per-concept estimate and recommends scaffold, reinforce, or advance |
-| Transparent feedback | Answer explanation, source passage, and “Why this next step?” disclosure |
-| Progress | Browser-local lessons and attempts, reload persistence, JSON export, clear-data confirmation |
-| Optional cloud generation | Explicit opt-in adapter for a configured compatible provider, with schema and source-quote validation |
+| Prepared lessons | Browser QA completed all three lessons and ten concepts |
+| Keyboard journey | Water cycle completed using Tab, arrows, Space and Enter, including incorrect/correct practice and the summary |
+| Responsive layouts | Library and reader measured at 320, 360, 768, 1280 and 1600 px without page-level horizontal overflow; a separate 390 px capture is included |
+| Saved state | Draft choices, source view, preferences and current concept survived reload in the documented checks |
+| Public hosting | HTTPS demo verified on November 4: wrong-answer scaffolding, source/why disclosures, correct follow-up, preferences/reload and custom lesson generation; health checks returned 200 |
+| Docker | **Docker not run**; the CLI was available but no running daemon was available |
+| Optional cloud adapter | Mocked contract tests only; no live-provider verification |
 
-## Architecture
+The local generator evaluation used three original development passages, five runs each, on the development Mac:
 
-~~~text
-Browser: HTML + CSS + JavaScript
-  |-- preferences, lessons and practice history in localStorage
-  |-- optional narration via browser/device voice service
-  |
-  +-- FastAPI Python server
-        |-- prepared original lessons
-        |-- scikit-learn TF-IDF local lesson generation
-        |-- Bayesian practice update
-        +-- optional HTTPS AI provider (only when enabled and selected)
-~~~
-
-One process serves the UI and API. There is no frontend bundler, database, vector database, or account service.
-
-- [app/nlp.py](app/nlp.py): sentence grouping, TF-IDF centroid ranking, keywords, extractive summaries, cloze questions.
-- [app/adaptation.py](app/adaptation.py): the practice model and recommendation policy.
-- [app/provider.py](app/provider.py): optional provider adapter.
-- [app/main.py](app/main.py): typed API, request checks, generation concurrency, security headers.
-- [static/app.js](static/app.js): reader, navigation, accessible feedback, preferences, persistence and export.
-- [tests/test_pace.py](tests/test_pace.py): API, generation, adaptation, and provider contract tests.
-
-### Three content modes, clearly distinguished
-
-**Prepared samples:** three original lessons about the water cycle, plant energy, and simple circuits. Explanations, examples and questions are prepared content. They make the demo repeatable.
-
-**Local NLP (default):** the app groups source sentences, ranks representative sentences using TF-IDF and cosine similarity, and creates source-word recall questions. Explanations are extractive: the words come from the source. It does not train a neural model or promise to simplify difficult vocabulary. Distractors are source terms and may be pedagogically weak.
-
-**Optional cloud AI:** a compatible provider can produce rewritten explanations and questions. Structured output and exact source quotes are validated. Matching a source quote does not prove every generated claim is correct. A teacher or learner should review generated material. Cloud failures are reported, not silently replaced with a fake result.
-
-### How practice adapts
-
-For each concept, the model starts with probability **p = 0.20**. With guess **g = 0.25**, slip **s = 0.10**, and learning transition **t = 0.15**:
-
-~~~text
-Correct answer:
-  posterior = p(1-s) / [p(1-s) + (1-p)g]
-
-Incorrect answer:
-  posterior = ps / [ps + (1-p)(1-g)]
-
-After either observation:
-  next_p = posterior + (1-posterior)t
-~~~
-
-An incorrect answer requests **scaffold** (smaller steps and another question). A correct answer below 0.80 requests **reinforce**. A correct answer at or above 0.80 requests **advance**. Two distinct correct answers from the initial prior produce 0.5526, then 0.8439. An incorrect answer followed by a correct one produces 0.1774, then 0.5215.
-
-Parameters are hand-selected and uncalibrated. Questions have different difficulty and may have different numbers of options; the fixed guess rate is an illustrative simplification. The estimate is not a percentage of intelligence, a diagnosis, or proof of mastery. The UI describes practice and recommendations rather than asserting learning gains. Each question is scored only once per saved session.
-
-## Actual validation results
-
-Latest checks, November 4, 2026: **38 Python tests and seven JavaScript tests pass**. All three prepared lessons were completed; a fresh water-cycle journey was completed using only Tab, arrow keys, Space and Enter. Duplicate custom input preserved its answered question, and reload restored the current concept, open source view and scroll position at the tested viewport. Library and reader measurements at 320, 360, 768, 1280 and 1600 px showed no page-level horizontal overflow. Fresh dependency installation and a clean source-copy test run passed. See [the readiness record](docs/READINESS.md) for limits, including unverified screen-reader output, actual 200% zoom, audible narration, physical phones and independent browser runs.
-
-Recorded November 3, 2026:
-
-- **28 automated tests passed**; one upstream Starlette/httpx deprecation warning.
-- Python package dependency check passed.
-- JavaScript syntax check passed.
-- Browser checks covered lesson creation, wrong/correct practice, distinct follow-up, all four water-cycle concepts, summary, persistence, preferences, skip link, source disclosure, and a downloaded JSON export.
-- Responsive library and reader checks at **390 px** showed no page-level horizontal overflow after a reader grid fix.
-- No console errors or warnings appeared in the inspected browser logs.
-
-Local generator evaluation: three original sample passages, five runs per passage on this development machine:
-
-| Passage | Generated concepts | Quotes found in source | Grounded source-word questions | Median generation |
+| Passage | Concepts | Quotes found in source | Grounded source-word questions | Median generation |
 | --- | ---: | ---: | ---: | ---: |
 | Water cycle | 4 | 4/4 | 11/11 | 1.83 ms |
 | Plant energy | 4 | 4/4 | 11/11 | 1.61 ms |
 | Electricity | 5 | 5/5 | 9/9 | 1.57 ms |
 
-All 13 generated summaries also matched source text. These are small, in-process functional checks on development examples, **not an external benchmark, model accuracy, hosted latency, or evidence of improved learning**. The optional cloud adapter has mocked contract tests; no live provider call has been verified. Docker and public hosting have not yet been verified.
+All 13 extractive summaries also matched their source. These are small functional source-fidelity checks, **not an external benchmark, model accuracy, hosted latency or evidence of improved learning**.
 
-![Adaptive reader showing an explanation broken into steps](docs/screenshots/adaptive-reader.jpg)
+**Known limits**
 
-See [accessibility and QA notes](docs/ACCESSIBILITY.md) for tested behaviour and remaining limitations.
+- Not verified: real screen-reader output, actual 200% zoom or physical phones.
+- Not verified: audible narration across devices or independent Chrome/Firefox/Safari runs.
+- Not verified: every failure/contrast state, hosted load behavior or learning outcomes.
+- Axe/Lighthouse were unavailable.
+
+[Detailed QA](docs/POLISH_REPORT.md), [keyboard/persistence follow-up](docs/READINESS.md) and [hosted verification](docs/DELIVERY_STATUS.md) contain the methods and limits. Earlier results are retained in [the build log](docs/BUILD_LOG.md).
+
+## Screenshot gallery
+
+Real local app captures; the summary contains QA practice, not learner-study results. Narrow views use viewport emulation.
+
+| Reading preferences | Explained next step |
+| --- | --- |
+| [![Preferences panel with 28 px text and stronger contrast enabled](docs/screenshots/preferences-large-contrast.jpg)](docs/screenshots/preferences-large-contrast.jpg) | [![Wrong evaporation answer, smaller steps and expanded why recommendation](docs/screenshots/polished-reader.jpg)](docs/screenshots/polished-reader.jpg) |
+
+| Practice summary | Mobile layout |
+| --- | --- |
+| [![Water-cycle summary showing four concepts, five attempts and four correct answers from keyboard QA](docs/screenshots/keyboard-journey.jpg)](docs/screenshots/keyboard-journey.jpg) | [![Learning library at a 390 px emulated mobile viewport](docs/screenshots/mobile.jpg)](docs/screenshots/mobile.jpg) |
+
+[All screenshots and capture notes](docs/screenshots/README.md)
 
 ## Data and privacy
 
-- No diagnosis, disability profile, identity, email, or account is required.
-- Remembering progress stores lesson text, preferences and attempts in this browser. Turning it off removes the saved copy; the current session can continue in memory. Export is a record, not an importable backup.
-- Default lesson generation sends text to this app's server. When hosted, “local NLP” means processing on that hosting server, not entirely on the learner's device. The app has no lesson database and does not intentionally log request bodies; infrastructure may retain request metadata.
-- Cloud mode sends the lesson title and passage to the configured provider only after explicit selection. The key stays on the server.
-- Narration uses browser/device voice services, which may be remote depending on the selected voice.
-- The demo is not intended to store sensitive student records. Browser storage is not encrypted application storage.
+- No account, diagnosis, camera or microphone is required. Optional narration may use browser/device voice services, including remote voices.
+- Remembering stores lesson text, preferences and attempts in this browser. Turning it off removes the saved copy while the current in-memory session can continue. Nothing syncs across devices. JSON export is a record, not an importable backup.
+- Pasted text is processed by the app server, including when hosted. The app has no lesson database and does not intentionally log request bodies; hosting infrastructure may keep request metadata.
+- Optional cloud mode sends the title and passage to the configured provider only after selection. Its key stays on the server. Browser storage is not encrypted application storage; the demo is not intended for sensitive student records.
 
-## Deployment and submission
+## Future work
 
-[Deployment guide](docs/DEPLOYMENT.md) includes Render and Docker instructions. [Demo script](docs/DEMO_SCRIPT.md) and [submission text](docs/SUBMISSION.md) are ready for review.
-
-**Current delivery status:** public code, hosted demo and event submission confirmed on November 4. The downloaded source ZIP matched all 52 files in the publication snapshot, and its Python and JavaScript tests passed. Public browser checks verified sample practice, wrong-answer scaffolding, source/why disclosures, correct follow-up, preferences/reload and new custom lesson generation. The event form was updated with the tested demo URL. Video remains optional and unrecorded.
+- Test with real students, teachers and accessibility specialists, including real screen-reader sessions.
+- Calibrate Bayesian parameters and assess recommendations with consented data.
+- Add and evaluate multilingual lessons.
+- Have teachers review generated questions and improve distractors and conceptual assessment.
+- Verify a live cloud-provider path and review its output quality.
+- Add optional accounts with secure cross-device synchronization while retaining account-free access.
 
 ## AI assistance and provenance
 
 Codex was used for implementation, original sample content drafting, interface illustrations, debugging, test development, evaluation and documentation. The solo participant is Swayam Bangad; AI assistance is disclosed rather than counted as a human team member. No other AI assistant or external runtime AI provider was used in the tested default path.
 
-During GitHub publication, GitHub's web editor also auto-suggested the message for one file-creation commit. That suggestion affected commit wording, not application implementation or runtime generation.
-
-Open-source libraries include FastAPI, Pydantic, scikit-learn, NumPy, SciPy, Uvicorn, httpx and pytest. The default implementation uses TF-IDF and Bayesian inference rather than a pretrained LLM. Visuals are code-native SVGs and CSS; no stock photos or generated raster assets are required.
-
-[NEURAL_STORM_BRIEF.md](NEURAL_STORM_BRIEF.md) records earlier rule interpretation and conceptual discussion. [Build log](docs/BUILD_LOG.md) distinguishes those advance notes from implementation on November 3. No dates or commit history have been manufactured.
-
-## Reference documentation
-
-- [scikit-learn text feature extraction](https://scikit-learn.org/stable/modules/feature_extraction.html)
-- [FastAPI static files](https://fastapi.tiangolo.com/tutorial/static-files/)
-- [MDN browser speech synthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
-- [W3C accessibility principles](https://www.w3.org/WAI/fundamentals/accessibility-principles/)
-- [W3C guidance on clear content](https://www.w3.org/WAI/WCAG2/supplemental/objectives/o3-clear-content/)
-
-Sample passages are original educational text; background reference links appear in each prepared lesson. Accessibility design references do not constitute a conformance certification.
+Original prepared lessons are labelled as prepared; local NLP is extractive rather than generative. Visuals use code-native SVG and CSS. The source is available under the [MIT license](LICENSE). [Development records](docs/BUILD_LOG.md) and [event rules](docs/NEURAL_STORM_BRIEF.md) preserve the distinction between advance discussion and implementation.
 
