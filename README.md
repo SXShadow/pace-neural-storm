@@ -5,9 +5,11 @@
 
 **Public repository:** [SXShadow/pace-neural-storm](https://github.com/SXShadow/pace-neural-storm). Participant and registered team names were verified against the event dashboard on November 4; earlier planning records retain the spelling originally supplied.
 
+**Live demo:** [Open Pace](https://pace-neural-storm.onrender.com). No account or API key is needed. The free server sleeps with inactivity; a first visit may take around a minute to wake. Once loaded, start The water cycle.
+
 **Submission kit:** [start here](docs/START_HERE.md) · [current form answers](docs/FORM_ANSWERS.md) · [judge Q&A](docs/JUDGE_QA.md) · [screenshot guide](docs/screenshots/README.md).
 
-**Delivery update, November 4:** the complete code is published in the public repository above. The Neural Storm dashboard confirmed the project submission, and the saved repository link remained visible after reload. Optional hosting and video are still pending. See the [earlier readiness checks](docs/READINESS.md) for scoped verification and limitations.
+**Delivery update, November 4:** the complete code is published, the HTTPS demo is live, and the Neural Storm dashboard confirmed submission with both links saved. See [delivery verification](docs/DELIVERY_STATUS.md) and the [earlier readiness checks](docs/READINESS.md) for scoped evidence and limitations. No demo video has been recorded.
 
 **November 4 polish update:** 38 Python tests and 7 JavaScript tests pass. See the [detailed audit and remaining manual checks](docs/POLISH_REPORT.md) and [2½-minute Asha demo script](docs/ASHA_DEMO.md). The earlier November 3 results below are retained as historical evidence. Run JavaScript unit tests with **node --test tests/frontend.test.cjs** (Node is only needed for these developer tests). Code is available under the [MIT license](LICENSE).
 
@@ -161,7 +163,7 @@ See [accessibility and QA notes](docs/ACCESSIBILITY.md) for tested behaviour and
 
 [Deployment guide](docs/DEPLOYMENT.md) includes Render and Docker instructions. [Demo script](docs/DEMO_SCRIPT.md) and [submission text](docs/SUBMISSION.md) are ready for review.
 
-**Current delivery status:** public code repository and event submission confirmed on November 4. Downloaded the published source ZIP and verified all 52 files against the local submission source; all Python and JavaScript tests passed on that copy. A verified hosted URL and demo recording remain pending. The event form accepted the required repository URL with optional links blank.
+**Current delivery status:** public code, hosted demo and event submission confirmed on November 4. The downloaded source ZIP matched all 52 files in the publication snapshot, and its Python and JavaScript tests passed. Public browser checks verified sample practice, wrong-answer scaffolding, source/why disclosures, correct follow-up, preferences/reload and new custom lesson generation. The event form was updated with the tested demo URL. Video remains optional and unrecorded.
 
 ## AI assistance and provenance
 
