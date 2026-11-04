@@ -1,14 +1,18 @@
-# Screenshot choices
+# Real app captures
 
-All images are actual local prototype captures, not mockups. They contain QA practice, not real student-study results. Original captures are retained alongside updated ones.
+All images are unedited captures of the real local prototype. They contain QA sessions, not research-participant data. Viewport emulation does not establish physical-device behavior.
 
-| Order | Image | What it establishes |
-| --- | --- | --- |
-| 1 | [Polished library](polished-library.jpg) | Initial learning space, three sample lessons and own-notes entry |
-| 2 | [Preferences](preferences.jpg) | Text, spacing, contrast and focus controls; remaining preferences are reached by scrolling the dialog |
-| 3 | [Adaptive reader](polished-reader.jpg) | Wrong-answer response and visible recommendation |
-| 4 | [Source passage](source-passage.jpg) | Learner access to the original passage |
-| 5 | [Journey summary](keyboard-journey.jpg) | Actual four-concept, five-attempt keyboard QA run |
-| 6 | [Narrow reader](narrow-reader.jpg) | Reader layout at a narrow emulated viewport |
+| File | Capture / purpose |
+| --- | --- |
+| [library.jpg](library.jpg) | 1280 × 720 original library; README hero |
+| [polished-library.jpg](polished-library.jpg) | 713 × 1316 full library after polish |
+| [preferences.jpg](preferences.jpg) | 1280 × 720 original preferences view |
+| [preferences-large-contrast.jpg](preferences-large-contrast.jpg) | New local screenshot: text size 28 px and Stronger contrast enabled; controls below the visible area remain reachable by scrolling |
+| [polished-reader.jpg](polished-reader.jpg) | 1280 × 1990 wrong-answer flow with Why this next step? expanded |
+| [adaptive-reader.jpg](adaptive-reader.jpg) | 1280 × 1712 earlier small-step reader |
+| [source-passage.jpg](source-passage.jpg) | 1280 × 1860 reader with original source expanded |
+| [keyboard-journey.jpg](keyboard-journey.jpg) | 1280 × 1298 actual keyboard QA summary: four concepts, five attempts, four correct |
+| [mobile.jpg](mobile.jpg) | 390 × 844 emulated library |
+| [narrow-reader.jpg](narrow-reader.jpg) | 360 × 2388 emulated reader |
 
-The images illustrate the tested UI; they do not prove accessibility conformance or educational outcomes. The narrow capture is viewport emulation, not a physical-phone test.
+The new preferences screenshot was captured during this documentation pass using the existing local server; preferences were then restored. Original captures were retained. Images show UI states, not accessibility certification or improved learning. [Documentation index](../README.md)
