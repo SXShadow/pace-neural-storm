@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-11-03T14:24:49.514238+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Darwin",
+    "machine": "arm64"
+  },
+  "scope": "Three original sample passages, five local generation runs each. Functional source-fidelity checks, not an external educational benchmark.",
+  "limitations": "Extractive source fidelity does not measure learning effectiveness, readability improvement, semantic quiz quality, or clinical validity. Bayesian parameters are hand-selected and uncalibrated. No live cloud inference was evaluated.",
+  "local_nlp_cases": [
+    {
+      "lesson": "The water cycle",
+      "concept_count": 4,
+      "source_quotes_found": 4,
+      "extractive_summaries_found": 4,
+      "question_count": 11,
+      "source_word_questions_grounded": 11,
+      "median_generation_ms": 1.83
+    },
+    {
+      "lesson": "How plants make food",
+      "concept_count": 4,
+      "source_quotes_found": 4,
+      "extractive_summaries_found": 4,
+      "question_count": 11,
+      "source_word_questions_grounded": 11,
+      "median_generation_ms": 1.61
+    },
+    {
+      "lesson": "A spark of electricity",
+      "concept_count": 5,
+      "source_quotes_found": 5,
+      "extractive_summaries_found": 5,
+      "question_count": 9,
+      "source_word_questions_grounded": 9,
+      "median_generation_ms": 1.57
+    }
+  ],
+  "adaptation_sequences": {
+    "two_correct": [
+      {
+        "correct": true,
+        "probability": 0.5526,
+        "action": "reinforce",
+        "label": "A good first step",
+        "reason": "You answered correctly. Another question can help check the idea from a different angle, or you can move on.",
+        "attempts": 1
+      },
+      {
+        "correct": true,
+        "probability": 0.8439,
+        "action": "advance",
+        "label": "Ready for the next step",
+        "reason": "Your recent answers support moving forward. You can still revisit this concept whenever you like.",
+        "attempts": 2
+      }
+    ],
+    "incorrect_then_correct": [
+      {
+        "correct": false,
+        "probability": 0.1774,
+        "action": "scaffold",
+        "label": "Let's look at it another way",
+        "reason": "Your answer suggests this concept could use another example. The next activity uses smaller steps and a source passage.",
+        "attempts": 1
+      },
+      {
+        "correct": true,
+        "probability": 0.5215,
+        "action": "reinforce",
+        "label": "A good first step",
+        "reason": "You answered correctly. Another question can help check the idea from a different angle, or you can move on.",
+        "attempts": 2
+      }
+    ],
+    "three_incorrect": [
+      {
+        "correct": false,
+        "probability": 0.1774,
+        "action": "scaffold",
+        "label": "Let's look at it another way",
+        "reason": "Your answer suggests this concept could use another example. The next activity uses smaller steps and a source passage.",
+        "attempts": 1
+      },
+      {
+        "correct": false,
+        "probability": 0.1738,
+        "action": "scaffold",
+        "label": "Let's look at it another way",
+        "reason": "Your answer suggests this concept could use another example. The next activity uses smaller steps and a source passage.",
+        "attempts": 2
+      },
+      {
+        "correct": false,
+        "probability": 0.1732,
+        "action": "scaffold",
+        "label": "Let's look at it another way",
+        "reason": "Your answer suggests this concept could use another example. The next activity uses smaller steps and a source passage.",
+        "attempts": 3
+      }
+    ]
+  }
+}
