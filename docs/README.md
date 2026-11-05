@@ -7,7 +7,7 @@ Start with the [project README](../README.md). For a quick review, open the [dem
 | File | Purpose |
 | --- | --- |
 | [README.md](README.md) | This complete documentation index |
-| [START_HERE.md](START_HERE.md) | Current reviewer/submission guide and the recording placeholder |
+| [START_HERE.md](START_HERE.md) | Current reviewer/submission guide |
 | [DEMO_SCRIPT.md](DEMO_SCRIPT.md) | Consolidated 2½-minute fictional Asha story, preparation and fallback |
 | [demo-input.txt](demo-input.txt) | Original gravity passage for live input |
 | [JUDGE_QA.md](JUDGE_QA.md) | Technical, impact, privacy and limitation answers |
@@ -17,13 +17,23 @@ Start with the [project README](../README.md). For a quick review, open the [dem
 | [DEPLOYMENT.md](DEPLOYMENT.md) | Reproduction configuration for the Python service and optional Docker path |
 | [DELIVERY_STATUS.md](DELIVERY_STATUS.md) | Public-source comparison, actual hosted checks and saved-submission evidence |
 | [POLISH_REPORT.md](POLISH_REPORT.md) | Detailed functional, responsive and accessibility QA with limits |
-| [READINESS.md](READINESS.md) | Dated keyboard/persistence follow-up; its former pending gates are historical |
 | [ACCESSIBILITY.md](ACCESSIBILITY.md) | Scoped accessibility methods and unverified assistive-technology behavior |
-| [evaluation.json](evaluation.json) | Actual dated local generation timings, fidelity checks and BKT sequences |
+| [evaluation.json](evaluation.json) | Historical generation timings, grounding checks that hold by construction, and BKT sequences |
+| [evaluation_questions.json](evaluation_questions.json) | Four-passage question-level leakage, source co-occurrence and distractor diagnostics, with definitions and full details |
+| [../scripts/evaluate_questions.py](../scripts/evaluate_questions.py) | Measurement-only script; run with `python -m scripts.evaluate_questions` |
+| [../.github/workflows/ci.yml](../.github/workflows/ci.yml) | Python 3.12 and Node 24 test jobs; the static local-test badge is independent of CI |
 | [BUILD_LOG.md](BUILD_LOG.md) | Development provenance, historical 28-test results and former header material |
 | [NEURAL_STORM_BRIEF.md](NEURAL_STORM_BRIEF.md) | Original screenshot rules plus verified 72-hour organizer update |
-| [AGENTS.md](AGENTS.md) | Agent context moved from the root; historical and current attribution |
-| [DOCS_REVIEW.md](DOCS_REVIEW.md) | Local restructure report, scope proof and verification methods |
+
+## Archived records
+
+These files were moved, not deleted. They retain dated observations and former instructions/statuses for historical context; they are not current operating instructions or evidence of a new verification run. Relative links were repaired after the move. BUILD_LOG.md remains unchanged.
+
+| File | Purpose |
+| --- | --- |
+| [archive/AGENTS.md](archive/AGENTS.md) | Historical agent context and attribution |
+| [archive/DOCS_REVIEW.md](archive/DOCS_REVIEW.md) | November 4 documentation-review methods and scope |
+| [archive/READINESS.md](archive/READINESS.md) | November 4 keyboard/persistence checks and historical delivery gates |
 
 ## Screenshots and visual assets
 
@@ -44,7 +54,7 @@ Captures are real local prototype views. They illustrate QA, not a study with le
 | [screenshots/narrow-reader.jpg](screenshots/narrow-reader.jpg) | 360 px emulated reader capture |
 | [badges/license.svg](badges/license.svg) | Local MIT-license badge |
 | [badges/python.svg](badges/python.svg) | Local Python 3.12 badge |
-| [badges/tests.svg](badges/tests.svg) | Static badge for the verified 38 Python + seven JavaScript results; not CI status |
+| [badges/tests.svg](badges/tests.svg) | Static badge for the November 5 local 43 Python + 21 JavaScript results; not CI status |
 
 ## Technical and design references
 

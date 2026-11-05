@@ -30,7 +30,7 @@ No intended-user study is documented. Asha is a fictional demo persona. The next
 
 ## What does the evaluation prove?
 
-It establishes functional behavior on a small development set: passing tests, exercised browser flows and generated passages grounded in their input. It does not establish comprehension improvement, readability gains, general quiz quality or clinical validity. Measured generator timings are local in-process timings.
+Passing tests and exercised browser flows establish scoped functional behavior. The earlier 13/13 quotes and 31/31 restored questions are grounding checks that hold by construction. The four-passage diagnostic audit flags answer leakage in 3/39 prompts, distractor/source co-occurrence in 30/39 questions, and a crude POS/length mismatch in 9/117 distractors. Co-occurrence is not proof of multiple correct answers, and the heuristic is not a contextual POS tagger. None establishes comprehension improvement, readability gains, general quiz quality or clinical validity. Measured generator timings are local in-process timings.
 
 ## Where is student data stored?
 

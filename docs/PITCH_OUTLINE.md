@@ -30,7 +30,7 @@ Distinguish prepared samples, local text analysis and the unverified optional cl
 
 ## 5 — Evidence
 
-38 Python tests; seven JavaScript tests. Three prepared lessons completed. Keyboard-only water-cycle journey. On three development passages: 13/13 quotes and 31/31 source-word questions grounded in their source.
+43 Python tests; 21 JavaScript tests (local rerun November 5). Three prepared lessons completed. Keyboard-only water-cycle journey. On three development passages: 13/13 quotes and 31/31 source-word questions are grounding checks that hold by construction. The separate four-passage audit flags leakage in 3/39 prompts and source co-occurrence in 30/39; this is not semantic answer validation.
 
 These are functional checks. No learning improvement or accessibility certification is claimed.
 

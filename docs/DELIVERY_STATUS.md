@@ -14,7 +14,7 @@
 - Submitted the public repository through the event dashboard. The page confirmed: “Project submitted — you can update your links anytime before the deadline.” That confirmation and the repository URL remained after reload.
 - Deployed the Python app on a Render Free web service: 0.1 CPU, 512 MB, $0/month selected. No paid compute or payment details were used by the agent. Build used requirements.lock and Python 3.12.14. The deployed application source commit is 98724bbbe0d6196a515b506ba7fefc89f1462c46; subsequent changes document delivery.
 - Verified the HTTPS demo with actual browser requests: sample library, incorrect answer → smaller steps, why/source disclosure, correct follow-up, preference/reload persistence and generation of a new lesson from the original gravity passage. Inspected console errors/warnings: none. Render health checks returned 200.
-- Updated the saved event entry with the tested HTTPS demo link. Video was left blank because no recording exists.
+- Updated the saved event entry with the tested HTTPS demo link.
 
 ## Hosting behavior
 
@@ -30,4 +30,4 @@ Codex assisted with the application and supporting material. The optional cloud 
 
 ## Remaining limits
 
-No intended-user learning study, accessibility-conformance certification, real screen-reader verification, physical-phone test, actual 200% zoom run, independent Chrome/Firefox/Safari test or live cloud-provider call is claimed. A video is optional in the observed event form and has not been recorded. The presentation script and screenshots are available for review.
+No intended-user learning study, accessibility-conformance certification, real screen-reader verification, physical-phone test, actual 200% zoom run, independent Chrome/Firefox/Safari test or live cloud-provider call is claimed. The presentation script and screenshots are available for review.

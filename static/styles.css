@@ -22,3 +22,38 @@ summary{min-height:44px;padding-block:10px;cursor:pointer}select,input[type=text
 @media(max-width:800px){.app-shell{grid-template-columns:minmax(0,1fr)}.sidebar{min-width:0}.breadcrumb,.reader-toolbar-group{flex-wrap:wrap}}
 @media(max-width:360px){.sidebar{padding-inline:12px;gap:6px}.brand{font-size:26px;gap:6px}.brand svg{width:22px;height:22px}nav{gap:0}nav a,nav button{padding:10px}}
 @media print{.sidebar,.topbar,.workspace-footer,.reader-toolbar,.reader-navigation,dialog,.toast,.button{display:none!important}.app-shell,.reader-layout{display:block}main{padding:0}.reader-card{border:0}.lesson-outline{display:none}.source-details{display:block}.reader-content{padding:0}body{background:white}}
+/* Local polish: readable text floors; preserve the existing theme and rules above. */
+.nav-label, .eyebrow, .hero .eyebrow, .lesson-card .eyebrow, .lesson-outline .eyebrow,
+.brand-caption, .local-badge, .topbar-location, .quiet-message, .profile-avatar,
+.workspace-footer, .date-tag, .lesson-meta, .card-progress, .pill, .stat-label,
+.step-number, .outline-note, .keyword, .practice-header > span,
+.practice-actions .muted, .feedback details, .feedback details p,
+.reader-method, .source-note, .progress-info p, .result-concepts p,
+.dialog-head .eyebrow, .range-labels, .reading-preview .eyebrow,
+.field-hint, .word-count, .processing-note, .comfort-title p, .bring-lesson p {
+  font-size: 12px;
+}
+.lesson-card p { font-size: 12px; }
+.result-concepts h3 { font-size: 14px; }
+:is(button, a:not(.brand), summary, label, select, input, textarea) {
+  font-size: 14px !important;
+}
+:is(button, a:not(.brand), summary, label) :is(span, small, strong, em, output) {
+  font-size: inherit !important;
+}
+/* The illustration is decorative; tiny lettering inside its scaled SVG is hidden. */
+.hero-art text { display: none; }
+.reader-toolbar, .reader-toolbar-group, .reader-navigation,
+.section-heading, .page-intro { flex-wrap: wrap; }
+.word-count, #create-form > label { flex-wrap: wrap; gap: 4px 12px; }
+.source-note, .processing-note, .feedback { overflow-wrap: anywhere; }
+.initial-loading { padding: clamp(20px, 8vw, 80px); }
+@media (min-width: 1500px) {
+  .lesson-card p { font-size: 13px; }
+}
+@media (max-width: 1100px) {
+  .hero p { font-size: 12px; }
+}
+@media (max-width: 800px) {
+  nav .nav-text { display: none; }
+}

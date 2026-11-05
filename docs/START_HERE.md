@@ -11,16 +11,14 @@
 
 1. Follow [Try it in three minutes](../README.md#try-it-in-three-minutes).
 2. Use the [consolidated Asha presentation script](DEMO_SCRIPT.md) and [original input](demo-input.txt).
-3. Inspect [test and browser evidence](READINESS.md), [detailed polish checks](POLISH_REPORT.md), [source-fidelity results](evaluation.json) and [hosted verification](DELIVERY_STATUS.md).
+3. Inspect [test and browser evidence](archive/READINESS.md), [detailed polish checks](POLISH_REPORT.md), [historical grounding checks](evaluation.json), [question diagnostics](evaluation_questions.json) and [hosted verification](DELIVERY_STATUS.md).
 4. Consult [judge Q&A](JUDGE_QA.md), [submission answers](FORM_ANSWERS.md) or the [optional pitch outline](PITCH_OUTLINE.md).
-
-TODO: add demo video link here once recorded.
 
 ## Submission and rules
 
 The entry is already saved with the repository and live demo URLs. The later [official-rule update](NEURAL_STORM_BRIEF.md) extends the build/submission window to **November 5, 2026 at 8:00 PM IST**. The earlier screenshot deadline was November 4. One entry per team can be updated by resubmission before the deadline.
 
-The recorded rules do **not explicitly address repository edits after the submission deadline**. Do not assume they are allowed; seek organizer clarification before making post-deadline public changes. This documentation revision is local and before the extended deadline.
+The recorded rules do **not explicitly address repository edits after the submission deadline**. Do not assume they are allowed; seek organizer clarification before making post-deadline public changes. This documentation revision was reviewed on November 5 before the extended deadline; publication follows participant authorization.
 
 ## Required material and evidence
 

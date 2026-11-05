@@ -12,22 +12,22 @@ All 25 baseline files outside README/docs and the two permitted moved documents 
 
 | File | Change |
 | --- | --- |
-| [../README.md](../README.md) | Reordered the pitch; added badges, contents, barrier mapping, deliberate no-key design, concise latest validation, collapsible BKT math, file tree, gallery and future work |
-| [README.md](README.md) | Added a complete index of documents, screenshots, badges and references |
+| [../README.md](../../README.md) | Reordered the pitch; added badges, contents, barrier mapping, deliberate no-key design, concise latest validation, collapsible BKT math, file tree, gallery and future work |
+| [README.md](../README.md) | Added a complete index of documents, screenshots, badges and references |
 | [AGENTS.md](AGENTS.md) | Moved from root with git mv; repaired references and distinguished historical/current attribution |
-| [NEURAL_STORM_BRIEF.md](NEURAL_STORM_BRIEF.md) | Moved from root with git mv; retained rule dates and noted current attribution/location |
-| [DEMO_SCRIPT.md](DEMO_SCRIPT.md) | Merged Asha timing with original preparation/input/fallback guidance; removed duplicate ASHA_DEMO.md |
-| [START_HERE.md](START_HERE.md) | Replaced contradictory pending gates with current review guidance and one recording TODO |
-| [SUBMISSION.md](SUBMISSION.md) | Consolidated identity, saved links, form guidance and rubric mapping |
-| [BUILD_LOG.md](BUILD_LOG.md) | Retained former README delivery/polish/provenance material and the historical November 3 results |
-| [DEPLOYMENT.md](DEPLOYMENT.md) | Corrected hosted-status contradiction; kept Docker unrun and hosted load testing unverified |
-| [DELIVERY_STATUS.md](DELIVERY_STATUS.md) | Linked the confirmed rule extension; removed irrelevant commit-suggestion wording |
-| [ACCESSIBILITY.md](ACCESSIBILITY.md) | Linked later hosting and keyboard evidence while preserving dated checks |
+| [NEURAL_STORM_BRIEF.md](../NEURAL_STORM_BRIEF.md) | Moved from root with git mv; retained rule dates and noted current attribution/location |
+| [DEMO_SCRIPT.md](../DEMO_SCRIPT.md) | Merged Asha timing with original preparation/input/fallback guidance; removed duplicate ASHA_DEMO.md |
+| [START_HERE.md](../START_HERE.md) | Replaced contradictory pending gates with current review guidance and one recording TODO |
+| [SUBMISSION.md](../SUBMISSION.md) | Consolidated identity, saved links, form guidance and rubric mapping |
+| [BUILD_LOG.md](../BUILD_LOG.md) | Retained former README delivery/polish/provenance material and the historical November 3 results |
+| [DEPLOYMENT.md](../DEPLOYMENT.md) | Corrected hosted-status contradiction; kept Docker unrun and hosted load testing unverified |
+| [DELIVERY_STATUS.md](../DELIVERY_STATUS.md) | Linked the confirmed rule extension; removed irrelevant commit-suggestion wording |
+| [ACCESSIBILITY.md](../ACCESSIBILITY.md) | Linked later hosting and keyboard evidence while preserving dated checks |
 | [READINESS.md](READINESS.md) | Repointed the merged demo reference |
-| [PITCH_OUTLINE.md](PITCH_OUTLINE.md) | Fixed the participant spelling and demo reference |
-| [screenshots/README.md](screenshots/README.md) | Listed every real capture, dimensions and evidence limits |
-| [preferences screenshot](screenshots/preferences-large-contrast.jpg) | Added a real local capture with 28 px text and contrast enabled; no screenshot editing |
-| [Local badges](README.md#screenshots-and-visual-assets) | Added three SVG badges containing existing verified license/version/test facts |
+| [PITCH_OUTLINE.md](../PITCH_OUTLINE.md) | Fixed the participant spelling and demo reference |
+| [screenshots/README.md](../screenshots/README.md) | Listed every real capture, dimensions and evidence limits |
+| [preferences screenshot](../screenshots/preferences-large-contrast.jpg) | Added a real local capture with 28 px text and contrast enabled; no screenshot editing |
+| [Local badges](../README.md#screenshots-and-visual-assets) | Added three SVG badges containing existing verified license/version/test facts |
 | DOCS_REVIEW.md | This local handoff and verification record |
 
 ## Verification
@@ -45,7 +45,7 @@ Docker not run. Cloud provider only mocked. Real screen-reader output, actual 20
 
 ## Manual actions
 
-Review the local [README](../README.md) before approving any publication. Rehearse the consolidated script, and record it if desired; the only recording-link placeholder is in START_HERE.md. Warm the free-hosted demo before presenting. No uptime pinger, hosting change, new account feature or deployment was configured in this pass.
+Review the local [README](../../README.md) before approving any publication. Rehearse the consolidated script, and record it if desired; the only recording-link placeholder is in START_HERE.md. Warm the free-hosted demo before presenting. No uptime pinger, hosting change, new account feature or deployment was configured in this pass.
 
 ## Post-deadline edits
 

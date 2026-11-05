@@ -99,5 +99,6 @@
         "attempts": 3
       }
     ]
-  }
+  },
+  "grounding_interpretation": "The 13/13 source quotes, 13/13 extractive summaries and 31/31 restored source-word questions are grounding checks that hold by construction. They do not measure question quality or learning outcomes."
 }

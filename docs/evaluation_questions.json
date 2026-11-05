@@ -1,0 +1,2008 @@
+{
+  "generated_at": "2026-11-05T07:29:15.035741+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Darwin",
+    "machine": "arm64"
+  },
+  "measurement_script_sha256": "6ebc9d5bb9fe99bf61b58e1816612fcf6d5363724d31212128c392e8201d4c98",
+  "scope": "All locally generated questions from the three complete sample passages and docs/demo-input.txt; prepared sample questions are not scored.",
+  "definitions": {
+    "answer_leak": "Question-level: the correct blank word still appears as a case-insensitive whole token anywhere in the complete prompt, including its instruction line.",
+    "ambiguity_proxy": "Question-level: at least one distractor appears as a case-insensitive whole token in the same concept's source quote. This is source co-occurrence, not proof of multiple semantically correct answers.",
+    "no_pos_or_length_match": "Distractor-level: both its coarse word-class guess differs from the answer's and its character length differs by more than two. Either matching dimension prevents this flag.",
+    "pos_heuristic": "A small declared verb list and ordered suffix rules, with a noun-like fallback. No contextual POS tagger, model download, or new dependency. Categories can be wrong, particularly for words with multiple grammatical uses.",
+    "length_heuristic": "Length matches when the absolute character-count difference is at most two; this cutoff is an unvalidated descriptive heuristic."
+  },
+  "limitations": [
+    "Four development passages are not an independent or representative benchmark.",
+    "Flags are reproducible diagnostics, not model accuracy, teaching quality, or learning-outcome measurements.",
+    "Source co-occurrence can flag a distractor even when it cannot grammatically or semantically fill the blank.",
+    "The POS/length heuristic can miss poor distractors or flag acceptable ones; inspect the included question-level details.",
+    "The earlier 13/13 quote and 31/31 question results are grounding checks that hold by construction, not evidence of question quality."
+  ],
+  "summary": {
+    "question_count": 39,
+    "distractor_count": 117,
+    "answer_leak": {
+      "flagged": 3,
+      "total": 39,
+      "rate": 0.076923,
+      "percent": 7.69
+    },
+    "ambiguity_proxy": {
+      "flagged": 30,
+      "total": 39,
+      "rate": 0.769231,
+      "percent": 76.92
+    },
+    "distractor_source_overlap": {
+      "flagged": 55,
+      "total": 117,
+      "rate": 0.470085,
+      "percent": 47.01
+    },
+    "no_pos_or_length_match": {
+      "flagged": 9,
+      "total": 117,
+      "rate": 0.076923,
+      "percent": 7.69
+    },
+    "pos_mismatch": {
+      "flagged": 22,
+      "total": 117,
+      "rate": 0.188034,
+      "percent": 18.8
+    },
+    "length_mismatch": {
+      "flagged": 51,
+      "total": 117,
+      "rate": 0.435897,
+      "percent": 43.59
+    },
+    "questions_with_mismatched_distractor": {
+      "flagged": 6,
+      "total": 39,
+      "rate": 0.153846,
+      "percent": 15.38
+    }
+  },
+  "cases": [
+    {
+      "id": "water-cycle",
+      "title": "The water cycle",
+      "input": "app.samples.SAMPLES",
+      "source_sha256": "2fc0f6611de7c7d5649b367fe72e79cac0e16f7e2d143f3c2e932c8c77de5aa3",
+      "concept_count": 4,
+      "summary": {
+        "question_count": 11,
+        "distractor_count": 33,
+        "answer_leak": {
+          "flagged": 1,
+          "total": 11,
+          "rate": 0.090909,
+          "percent": 9.09
+        },
+        "ambiguity_proxy": {
+          "flagged": 8,
+          "total": 11,
+          "rate": 0.727273,
+          "percent": 72.73
+        },
+        "distractor_source_overlap": {
+          "flagged": 13,
+          "total": 33,
+          "rate": 0.393939,
+          "percent": 39.39
+        },
+        "no_pos_or_length_match": {
+          "flagged": 0,
+          "total": 33,
+          "rate": 0.0,
+          "percent": 0.0
+        },
+        "pos_mismatch": {
+          "flagged": 3,
+          "total": 33,
+          "rate": 0.090909,
+          "percent": 9.09
+        },
+        "length_mismatch": {
+          "flagged": 18,
+          "total": 33,
+          "rate": 0.545455,
+          "percent": 54.55
+        },
+        "questions_with_mismatched_distractor": {
+          "flagged": 0,
+          "total": 11,
+          "rate": 0.0,
+          "percent": 0.0
+        }
+      },
+      "questions": [
+        {
+          "concept_id": "concept-1",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nEvaporation is the change of liquid _____ into water vapour, a gas.",
+          "source_quote": "Evaporation is the change of liquid water into water vapour, a gas. Energy from the Sun helps water evaporate from oceans, lakes and wet ground. Water vapour is invisible. Evaporation can happen below the boiling point of water.",
+          "answer_index": 0,
+          "answer": "water",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 5,
+          "answer_leak": true,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "droplets",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "precipitation",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 13,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "clouds",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-1",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nWater _____ is invisible.",
+          "source_quote": "Evaporation is the change of liquid water into water vapour, a gas. Energy from the Sun helps water evaporate from oceans, lakes and wet ground. Water vapour is invisible. Evaporation can happen below the boiling point of water.",
+          "answer_index": 1,
+          "answer": "vapour",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "liquid",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "precipitation",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 13,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "droplets",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-1",
+          "question_index": 2,
+          "prompt": "Which word completes this line from your source?\n_____ can happen below the boiling point of water.",
+          "source_quote": "Evaporation is the change of liquid water into water vapour, a gas. Energy from the Sun helps water evaporate from oceans, lakes and wet ground. Water vapour is invisible. Evaporation can happen below the boiling point of water.",
+          "answer_index": 0,
+          "answer": "evaporation",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 11,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "vapour",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "liquid",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "droplets",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\n_____ is the change of water vapour into liquid water.",
+          "source_quote": "Condensation is the change of water vapour into liquid water. When moist air cools sufficiently, some of its water vapour condenses into droplets. Many clouds contain tiny liquid droplets; some clouds contain ice crystals. Condensation also produces droplets on the outside of a cold glass.",
+          "answer_index": 2,
+          "answer": "condensation",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 12,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "clouds",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "precipitation",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 13,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "droplets",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nWhen moist air cools sufficiently, some of its water vapour condenses into _____.",
+          "source_quote": "Condensation is the change of water vapour into liquid water. When moist air cools sufficiently, some of its water vapour condenses into droplets. Many clouds contain tiny liquid droplets; some clouds contain ice crystals. Condensation also produces droplets on the outside of a cold glass.",
+          "answer_index": 0,
+          "answer": "droplets",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 8,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "precipitation",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 13,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "liquid",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "clouds",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 2,
+          "prompt": "Which word completes this line from your source?\nMany clouds contain tiny _____ droplets; some clouds contain ice crystals.",
+          "source_quote": "Condensation is the change of water vapour into liquid water. When moist air cools sufficiently, some of its water vapour condenses into droplets. Many clouds contain tiny liquid droplets; some clouds contain ice crystals. Condensation also produces droplets on the outside of a cold glass.",
+          "answer_index": 0,
+          "answer": "liquid",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "water",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "vapour",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "precipitation",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 13,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\n_____ is water that falls from clouds toward Earth's surface.",
+          "source_quote": "Precipitation is water that falls from clouds toward Earth's surface. It includes rain, snow, sleet and hail. Cloud droplets or ice particles grow and eventually fall. The temperature along their path influences the form of precipitation that reaches the ground.",
+          "answer_index": 0,
+          "answer": "precipitation",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 13,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "liquid",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "vapour",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "droplets",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nIt includes rain, snow, _____ and hail.",
+          "source_quote": "Precipitation is water that falls from clouds toward Earth's surface. It includes rain, snow, sleet and hail. Cloud droplets or ice particles grow and eventually fall. The temperature along their path influences the form of precipitation that reaches the ground.",
+          "answer_index": 3,
+          "answer": "sleet",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 5,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "water",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "vapour",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "droplets",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nAfter precipitation reaches land, some _____ flows over the surface as runoff into streams, rivers and lakes.",
+          "source_quote": "After precipitation reaches land, some water flows over the surface as runoff into streams, rivers and lakes. Some enters the soil through infiltration and may become groundwater. Water can return to the ocean and evaporate again. The water cycle has many pathways and no single starting point.",
+          "answer_index": 2,
+          "answer": "water",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 5,
+          "answer_leak": false,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "droplets",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "vapour",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "liquid",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nWater can _____ to the ocean and evaporate again.",
+          "source_quote": "After precipitation reaches land, some water flows over the surface as runoff into streams, rivers and lakes. Some enters the soil through infiltration and may become groundwater. Water can return to the ocean and evaporate again. The water cycle has many pathways and no single starting point.",
+          "answer_index": 3,
+          "answer": "return",
+          "answer_pos_guess": "verb-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "droplets",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "vapour",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "liquid",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 2,
+          "prompt": "Which word completes this line from your source?\nSome enters the soil through infiltration and may become _____.",
+          "source_quote": "After precipitation reaches land, some water flows over the surface as runoff into streams, rivers and lakes. Some enters the soil through infiltration and may become groundwater. Water can return to the ocean and evaporate again. The water cycle has many pathways and no single starting point.",
+          "answer_index": 1,
+          "answer": "groundwater",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 11,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "vapour",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "droplets",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 8,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "water",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plant-energy",
+      "title": "How plants make food",
+      "input": "app.samples.SAMPLES",
+      "source_sha256": "a81dd326f3cbd160c717443de1dd4bb2c0505eb8703864f4b3e45712d782daf0",
+      "concept_count": 4,
+      "summary": {
+        "question_count": 11,
+        "distractor_count": 33,
+        "answer_leak": {
+          "flagged": 0,
+          "total": 11,
+          "rate": 0.0,
+          "percent": 0.0
+        },
+        "ambiguity_proxy": {
+          "flagged": 10,
+          "total": 11,
+          "rate": 0.909091,
+          "percent": 90.91
+        },
+        "distractor_source_overlap": {
+          "flagged": 20,
+          "total": 33,
+          "rate": 0.606061,
+          "percent": 60.61
+        },
+        "no_pos_or_length_match": {
+          "flagged": 2,
+          "total": 33,
+          "rate": 0.060606,
+          "percent": 6.06
+        },
+        "pos_mismatch": {
+          "flagged": 3,
+          "total": 33,
+          "rate": 0.090909,
+          "percent": 9.09
+        },
+        "length_mismatch": {
+          "flagged": 9,
+          "total": 33,
+          "rate": 0.272727,
+          "percent": 27.27
+        },
+        "questions_with_mismatched_distractor": {
+          "flagged": 1,
+          "total": 11,
+          "rate": 0.090909,
+          "percent": 9.09
+        }
+      },
+      "questions": [
+        {
+          "concept_id": "concept-1",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nPhotosynthesis is the process by which plants use light energy to make sugars from _____ and carbon dioxide.",
+          "source_quote": "Photosynthesis is the process by which plants use light energy to make sugars from water and carbon dioxide. Plant roots absorb water. Carbon dioxide enters leaves through small openings called stomata.",
+          "answer_index": 3,
+          "answer": "water",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 5,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "leaves",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "chlorophyll",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 11,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "plant",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-1",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nCarbon _____ enters leaves through small openings called stomata.",
+          "source_quote": "Photosynthesis is the process by which plants use light energy to make sugars from water and carbon dioxide. Plant roots absorb water. Carbon dioxide enters leaves through small openings called stomata.",
+          "answer_index": 3,
+          "answer": "dioxide",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 7,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "plant",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "energy",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "sugars",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-1",
+          "question_index": 2,
+          "prompt": "Which word completes this line from your source?\nPlant _____ absorb water.",
+          "source_quote": "Photosynthesis is the process by which plants use light energy to make sugars from water and carbon dioxide. Plant roots absorb water. Carbon dioxide enters leaves through small openings called stomata.",
+          "answer_index": 2,
+          "answer": "roots",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 5,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "light",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "energy",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "sugars",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nThey contain chlorophyll, a pigment that absorbs _____ energy.",
+          "source_quote": "Light provides energy; it is not a material ingredient. Chloroplasts are structures in plant cells where photosynthesis occurs. They contain chlorophyll, a pigment that absorbs light energy.",
+          "answer_index": 3,
+          "answer": "light",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 5,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "sugars",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "plant",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "photosynthesis",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 14,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nLight provides _____; it is not a material ingredient.",
+          "source_quote": "Light provides energy; it is not a material ingredient. Chloroplasts are structures in plant cells where photosynthesis occurs. They contain chlorophyll, a pigment that absorbs light energy.",
+          "answer_index": 0,
+          "answer": "energy",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "photosynthesis",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 14,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "plant",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "sugars",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nThe captured energy powers the reactions that make _____.",
+          "source_quote": "Chlorophyll contributes to the green appearance of many leaves. The captured energy powers the reactions that make sugars. Photosynthesis produces sugars and releases oxygen.",
+          "answer_index": 2,
+          "answer": "sugars",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "light",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "plant",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "photosynthesis",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 14,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nPhotosynthesis produces sugars and _____ oxygen.",
+          "source_quote": "Chlorophyll contributes to the green appearance of many leaves. The captured energy powers the reactions that make sugars. Photosynthesis produces sugars and releases oxygen.",
+          "answer_index": 1,
+          "answer": "releases",
+          "answer_pos_guess": "verb-like",
+          "answer_length_characters": 8,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "light",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            },
+            {
+              "option_index": 2,
+              "text": "plant",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            },
+            {
+              "option_index": 3,
+              "text": "energy",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 2,
+          "prompt": "Which word completes this line from your source?\nChlorophyll contributes to the _____ appearance of many leaves.",
+          "source_quote": "Chlorophyll contributes to the green appearance of many leaves. The captured energy powers the reactions that make sugars. Photosynthesis produces sugars and releases oxygen.",
+          "answer_index": 0,
+          "answer": "green",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 5,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "plant",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "energy",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "sugars",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\n_____ store chemical energy and supply materials for plant growth.",
+          "source_quote": "Sugars store chemical energy and supply materials for plant growth. Plants also carry out cellular respiration to release usable energy from sugars. Plants do not get all their food directly from soil.",
+          "answer_index": 1,
+          "answer": "sugars",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "photosynthesis",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 14,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "light",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "plants",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\n_____ also carry out cellular respiration to release usable energy from sugars.",
+          "source_quote": "Sugars store chemical energy and supply materials for plant growth. Plants also carry out cellular respiration to release usable energy from sugars. Plants do not get all their food directly from soil.",
+          "answer_index": 0,
+          "answer": "plants",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "photosynthesis",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 14,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "light",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "chlorophyll",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 11,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 2,
+          "prompt": "Which word completes this line from your source?\nPlants do not get all their _____ directly from soil.",
+          "source_quote": "Sugars store chemical energy and supply materials for plant growth. Plants also carry out cellular respiration to release usable energy from sugars. Plants do not get all their food directly from soil.",
+          "answer_index": 1,
+          "answer": "food",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 4,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "plant",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "sugars",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "energy",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "simple-circuits",
+      "title": "A spark of electricity",
+      "input": "app.samples.SAMPLES",
+      "source_sha256": "cb576cdda793be135d6805ad9264b56426b78a28d27888f9c1a565870449d13d",
+      "concept_count": 5,
+      "summary": {
+        "question_count": 9,
+        "distractor_count": 27,
+        "answer_leak": {
+          "flagged": 0,
+          "total": 9,
+          "rate": 0.0,
+          "percent": 0.0
+        },
+        "ambiguity_proxy": {
+          "flagged": 6,
+          "total": 9,
+          "rate": 0.666667,
+          "percent": 66.67
+        },
+        "distractor_source_overlap": {
+          "flagged": 13,
+          "total": 27,
+          "rate": 0.481481,
+          "percent": 48.15
+        },
+        "no_pos_or_length_match": {
+          "flagged": 7,
+          "total": 27,
+          "rate": 0.259259,
+          "percent": 25.93
+        },
+        "pos_mismatch": {
+          "flagged": 13,
+          "total": 27,
+          "rate": 0.481481,
+          "percent": 48.15
+        },
+        "length_mismatch": {
+          "flagged": 12,
+          "total": 27,
+          "rate": 0.444444,
+          "percent": 44.44
+        },
+        "questions_with_mismatched_distractor": {
+          "flagged": 5,
+          "total": 9,
+          "rate": 0.555556,
+          "percent": 55.56
+        }
+      },
+      "questions": [
+        {
+          "concept_id": "concept-1",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\n_____ current flows when there is a complete conducting path and a potential difference.",
+          "source_quote": "A simple electric circuit includes a source such as a battery, conducting wires and a component such as a lamp. Electric current flows when there is a complete conducting path and a potential difference.",
+          "answer_index": 0,
+          "answer": "electric",
+          "answer_pos_guess": "adjective-like",
+          "answer_length_characters": 8,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "simple",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "circuit",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "stops",
+              "in_source_quote": false,
+              "pos_guess": "verb-like",
+              "length_characters": 5,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-1",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nA simple electric circuit includes a source such as a battery, _____ wires and a component such as a lamp.",
+          "source_quote": "A simple electric circuit includes a source such as a battery, conducting wires and a component such as a lamp. Electric current flows when there is a complete conducting path and a potential difference.",
+          "answer_index": 1,
+          "answer": "conducting",
+          "answer_pos_guess": "verb-like",
+          "answer_length_characters": 10,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "path",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            },
+            {
+              "option_index": 2,
+              "text": "current",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            },
+            {
+              "option_index": 3,
+              "text": "stops",
+              "in_source_quote": false,
+              "pos_guess": "verb-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nA _____ in the path stops current in the simple circuit.",
+          "source_quote": "A gap in the path stops current in the simple circuit. Conductors allow electric charge to move relatively easily; copper is a common example.",
+          "answer_index": 1,
+          "answer": "gap",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 3,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "electric",
+              "in_source_quote": true,
+              "pos_guess": "adjective-like",
+              "length_characters": 8,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            },
+            {
+              "option_index": 2,
+              "text": "conducting",
+              "in_source_quote": false,
+              "pos_guess": "verb-like",
+              "length_characters": 10,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            },
+            {
+              "option_index": 3,
+              "text": "open",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\n_____ allow electric charge to move relatively easily; copper is a common example.",
+          "source_quote": "A gap in the path stops current in the simple circuit. Conductors allow electric charge to move relatively easily; copper is a common example.",
+          "answer_index": 0,
+          "answer": "conductors",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 10,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "current",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "circuit",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "path",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nElectrical wires often combine a copper conductor with a _____ insulating layer.",
+          "source_quote": "Insulators such as plastic strongly resist charge movement under ordinary conditions. Electrical wires often combine a copper conductor with a plastic insulating layer.",
+          "answer_index": 1,
+          "answer": "plastic",
+          "answer_pos_guess": "adjective-like",
+          "answer_length_characters": 7,
+          "answer_leak": false,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "current",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "path",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            },
+            {
+              "option_index": 3,
+              "text": "circuit",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nInsulators such as plastic strongly resist charge movement under _____ conditions.",
+          "source_quote": "Insulators such as plastic strongly resist charge movement under ordinary conditions. Electrical wires often combine a copper conductor with a plastic insulating layer.",
+          "answer_index": 1,
+          "answer": "ordinary",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 8,
+          "answer_leak": false,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "circuit",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "path",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "current",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nIn a simple circuit, a closed _____ completes the conducting path and allows current to flow.",
+          "source_quote": "In a simple circuit, a closed switch completes the conducting path and allows current to flow. An open switch breaks that path and stops current.",
+          "answer_index": 2,
+          "answer": "switch",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "stops",
+              "in_source_quote": true,
+              "pos_guess": "verb-like",
+              "length_characters": 5,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "open",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "electric",
+              "in_source_quote": false,
+              "pos_guess": "adjective-like",
+              "length_characters": 8,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nAn open switch breaks that path and stops _____.",
+          "source_quote": "In a simple circuit, a closed switch completes the conducting path and allows current to flow. An open switch breaks that path and stops current.",
+          "answer_index": 0,
+          "answer": "current",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 7,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "conducting",
+              "in_source_quote": true,
+              "pos_guess": "verb-like",
+              "length_characters": 10,
+              "pos_match": false,
+              "length_match": false,
+              "no_pos_or_length_match": true
+            },
+            {
+              "option_index": 2,
+              "text": "simple",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "circuit",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-5",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nThe _____ open and closed describe the electrical path, not whether a lamp is physically covered.",
+          "source_quote": "The terms open and closed describe the electrical path, not whether a lamp is physically covered.",
+          "answer_index": 1,
+          "answer": "terms",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 5,
+          "answer_leak": false,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "circuit",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "current",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "simple",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "demo-gravity",
+      "title": "Demo gravity passage",
+      "input": "docs/demo-input.txt",
+      "source_sha256": "86af3b177e448ef209c6c4fdf70ae47872459c1877c925bc108b8e11df4bc96c",
+      "concept_count": 4,
+      "summary": {
+        "question_count": 8,
+        "distractor_count": 24,
+        "answer_leak": {
+          "flagged": 2,
+          "total": 8,
+          "rate": 0.25,
+          "percent": 25.0
+        },
+        "ambiguity_proxy": {
+          "flagged": 6,
+          "total": 8,
+          "rate": 0.75,
+          "percent": 75.0
+        },
+        "distractor_source_overlap": {
+          "flagged": 9,
+          "total": 24,
+          "rate": 0.375,
+          "percent": 37.5
+        },
+        "no_pos_or_length_match": {
+          "flagged": 0,
+          "total": 24,
+          "rate": 0.0,
+          "percent": 0.0
+        },
+        "pos_mismatch": {
+          "flagged": 3,
+          "total": 24,
+          "rate": 0.125,
+          "percent": 12.5
+        },
+        "length_mismatch": {
+          "flagged": 12,
+          "total": 24,
+          "rate": 0.5,
+          "percent": 50.0
+        },
+        "questions_with_mismatched_distractor": {
+          "flagged": 0,
+          "total": 8,
+          "rate": 0.0,
+          "percent": 0.0
+        }
+      },
+      "questions": [
+        {
+          "concept_id": "concept-1",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nGravity is a force of attraction between _____ that have mass.",
+          "source_quote": "Gravity is a force of attraction between objects that have mass. Earth pulls objects toward its centre.",
+          "answer_index": 0,
+          "answer": "objects",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 7,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "earth",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 5,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "air",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 3,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "moon",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-1",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nEarth _____ objects toward its centre.",
+          "source_quote": "Gravity is a force of attraction between objects that have mass. Earth pulls objects toward its centre.",
+          "answer_index": 3,
+          "answer": "pulls",
+          "answer_pos_guess": "verb-like",
+          "answer_length_characters": 5,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "air",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 3,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "mass",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "gravity",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": false,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\nThe Moon also has _____, but its surface gravity is weaker than Earth's.",
+          "source_quote": "The Moon also has gravity, but its surface gravity is weaker than Earth's. Mass is the amount of matter in an object.",
+          "answer_index": 0,
+          "answer": "gravity",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 7,
+          "answer_leak": true,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "air",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 3,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "object",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "mass",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-2",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nMass is the amount of _____ in an object.",
+          "source_quote": "The Moon also has gravity, but its surface gravity is weaker than Earth's. Mass is the amount of matter in an object.",
+          "answer_index": 3,
+          "answer": "matter",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "gravity",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "air",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 3,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "objects",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\n_____ is the force of gravity acting on an object.",
+          "source_quote": "Weight is the force of gravity acting on an object. An astronaut has the same mass on the Moon but weighs less there.",
+          "answer_index": 1,
+          "answer": "weight",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "air",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 3,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "objects",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "mass",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-3",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nAn astronaut has the same mass on the Moon but _____ less there.",
+          "source_quote": "Weight is the force of gravity acting on an object. An astronaut has the same mass on the Moon but weighs less there.",
+          "answer_index": 2,
+          "answer": "weighs",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 6,
+          "answer_leak": false,
+          "ambiguity_proxy": true,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "gravity",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "object",
+              "in_source_quote": true,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "air",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 3,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 0,
+          "prompt": "Which word completes this line from your source?\n_____ resistance opposes movement through air.",
+          "source_quote": "Air resistance opposes movement through air. A parachute increases air resistance and slows a falling person.",
+          "answer_index": 0,
+          "answer": "air",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 3,
+          "answer_leak": true,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 1,
+              "text": "gravity",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "mass",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": true,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 3,
+              "text": "object",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        },
+        {
+          "concept_id": "concept-4",
+          "question_index": 1,
+          "prompt": "Which word completes this line from your source?\nA parachute increases air _____ and slows a falling person.",
+          "source_quote": "Air resistance opposes movement through air. A parachute increases air resistance and slows a falling person.",
+          "answer_index": 3,
+          "answer": "resistance",
+          "answer_pos_guess": "noun-like",
+          "answer_length_characters": 10,
+          "answer_leak": false,
+          "ambiguity_proxy": false,
+          "distractors": [
+            {
+              "option_index": 0,
+              "text": "gravity",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 7,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 1,
+              "text": "object",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 6,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            },
+            {
+              "option_index": 2,
+              "text": "mass",
+              "in_source_quote": false,
+              "pos_guess": "noun-like",
+              "length_characters": 4,
+              "pos_match": true,
+              "length_match": false,
+              "no_pos_or_length_match": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

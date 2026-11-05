@@ -1,6 +1,6 @@
 # Submission readiness — November 4, 2026
 
-**Later delivery update:** [DELIVERY_STATUS.md](DELIVERY_STATUS.md) confirms public publication, the hosted demo and saved event submission. Pending external steps below describe the earlier audit state and are retained as historical records.
+**Later delivery update:** [DELIVERY_STATUS.md](../DELIVERY_STATUS.md) confirms public publication, the hosted demo and saved event submission. Pending external steps below describe the earlier audit state and are retained as historical records.
 
 Verdict: the local prototype is ready for participant acceptance testing and preparation for publication. The hackathon submission is **not complete**. No claim of perfection, accessibility certification, proven learning outcomes, or guaranteed prizes is made.
 
@@ -45,5 +45,5 @@ Pause/resume narration, automatic simpler-sentence rewrites and interactive term
 1. Swayam checks the water-cycle wrong-answer flow, preferences/reload, audio, phone and 200% zoom, and confirms participant spelling.
 2. After explicit authorization, publish the reviewed code to a public GitHub repository and verify access while signed out.
 3. Deploy the default no-key app if authorized, test the public URL, and add verified links to the documentation.
-4. Rehearse or record the consolidated [demo script](DEMO_SCRIPT.md) with actual working behavior.
+4. Rehearse or record the consolidated [demo script](../DEMO_SCRIPT.md) with actual working behavior.
 5. Submit through the event dashboard before the deadline, inspect the submitted links, and retain confirmation.

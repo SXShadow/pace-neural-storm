@@ -173,6 +173,7 @@ function renderReader() {
   const concept = lesson.concepts[index];
   const record = recordFor(active, concept);
   const scaffold = record.feedback?.action === 'scaffold';
+  const hasFollowup = concept.questions.some((_, questionIndex) => !record.answers.some(answer => answer.question === questionIndex));
   const chunked = record.stepOverride ?? (state.prefs.chunked || scaffold);
   const sourceURL = /^https:\/\//.test(lesson.source_url || '') ? lesson.source_url : '';
   const mode = {sample:'Prepared lesson', local_nlp:'Local text analysis', remote_ai:'AI-generated lesson'}[lesson.mode];
@@ -182,14 +183,14 @@ function renderReader() {
       const done = Boolean(active.records[item.id]?.answers?.length);
       return '<li><button class="concept-link" data-action="concept" data-index="' + itemIndex + '"' + (itemIndex === index ? ' aria-current="step"' : '') + '><span class="step-number ' + (done ? 'done' : '') + '">' + (done ? icon('check') : String(itemIndex + 1).padStart(2,'0')) + '</span>' + escapeHtml(item.title) + '</button></li>';
     }).join('') + '</ol><div class="outline-note">' + icon('sprout') + '<strong>There is no timer here.</strong>Pause, revisit, or keep going. This space is yours.</div></aside><div>' +
-    (scaffold && chunked ? '<div class="adaptation-banner" role="status">' + icon('sparkles') + '<div><strong>A smaller step, a different angle.</strong><p>Based on your last answer, this idea is now broken into steps. Take a look, then try a follow-up.</p></div></div>' : '') +
+    (scaffold && chunked ? '<div class="adaptation-banner" role="status">' + icon('sparkles') + '<div><strong>A smaller step, a different angle.</strong><p>Based on your last answer, this idea is now broken into steps. Take a look, then ' + (hasFollowup ? 'try a follow-up.' : 're-read the steps or check the source.') + '</p></div></div>' : '') +
     '<article class="reader-card" aria-labelledby="concept-heading"><div class="reader-toolbar"><div class="reader-toolbar-group"><button class="button secondary small" data-action="speak" aria-pressed="false" id="speak-button">' + icon('volume') + 'Read aloud</button><button class="chip-button" data-action="steps" aria-pressed="' + chunked + '">' + icon('layers') + 'Small steps</button></div><button class="button ghost small" data-action="source">' + icon('book') + 'View source</button></div>' +
     '<div class="reader-content"><div class="concept-eyebrow"><span class="eyebrow">STEP ' + String(index + 1).padStart(2,'0') + ' · ' + escapeHtml(lesson.category) + '</span></div><h2 id="concept-heading" tabindex="-1">' + escapeHtml(concept.title) + '</h2><div class="lesson-text" id="lesson-reading">' +
     (chunked ? '<ol class="numbered-steps">' + concept.steps.map((step, stepIndex) => '<li><span class="step-number" aria-hidden="true">' + (stepIndex + 1) + '</span><span>' + escapeHtml(step) + '</span></li>').join('') + '</ol>' : '<p>' + escapeHtml(concept.summary) + '</p>') +
     '</div><div class="keyword-list" aria-label="Key terms">' + concept.keywords.map(term => '<span class="keyword">' + escapeHtml(term) + '</span>').join('') + '</div>' +
     '<div class="example-box"><span class="eyebrow">' + icon('bulb') + (lesson.mode === 'local_nlp' ? 'ANOTHER LINE FROM YOUR SOURCE' : 'MAKE THE CONNECTION') + '</span><p>' + escapeHtml(concept.example) + '</p></div>' +
     '<details class="source-details" id="source-details"><summary>See the original passage</summary><blockquote class="source-quote">' + escapeHtml(concept.source_quote) + '</blockquote><p class="source-note">' + escapeHtml(lesson.source_label) + (sourceURL ? ' · <a href="' + escapeHtml(sourceURL) + '" target="_blank" rel="noopener noreferrer">Background reference ↗</a>' : '') + '</p>' + (lesson.mode === 'remote_ai' ? '<p class="source-note">The quote was checked against your source. AI explanations and answers can still contain mistakes.</p>' : '') + '</details></div>' +
-    renderPractice(concept, record, active) + '</article><div class="reader-navigation"><button class="button secondary" data-action="previous"' + (index === 0 ? ' disabled' : '') + '>' + icon('back') + 'Previous step</button><button class="button primary" data-action="next">' + (index === lesson.concepts.length - 1 ? 'See my journey' : 'Next small step') + icon('arrow') + '</button></div>' +
+    renderPractice(concept, record, active) + '</article><div class="reader-navigation"><button class="button secondary" data-action="previous"' + (index === 0 ? ' disabled' : '') + '>' + icon('back') + 'Previous step</button><button class="button ' + (!record.feedback || record.feedback.action === 'advance' ? 'primary' : 'secondary') + '" data-action="next">' + (index === lesson.concepts.length - 1 ? 'See my journey' : 'Next small step') + icon('arrow') + '</button></div>' +
     '<div class="reader-method"><details><summary>' + escapeHtml(mode) + ' · How this works</summary><p>' + escapeHtml(lesson.method) + ' Practice recommendations use an illustrative Bayesian model. They are not a diagnosis or validated mastery score.</p></details></div>' +
     (state.prefs.focus ? '<button class="text-link" data-action="focus">' + icon('focus') + 'Leave focus view</button>' : '') + '</div></div>';
   applyPreferences();
@@ -208,12 +209,17 @@ function renderPractice(concept, record, active) {
   const answerRecord = record.answers.find(answer => answer.question === questionIndex);
   const feedback = record.feedback;
   const unanswered = concept.questions.some((_, index) => !record.answers.some(answer => answer.question === index));
+  const nextPrimary = feedback?.action === 'advance' || (!unanswered && answerRecord?.correct);
+  const estimate = Number.isFinite(feedback?.previousProbability)
+    ? 'Practice estimate moved from ' + Math.round(feedback.previousProbability * 100) + '% to ' + Math.round(record.probability * 100) + '% after your ' + (answerRecord?.correct ? 'correct' : 'incorrect') + ' answer.'
+    : 'Practice estimate: ' + Math.round(record.probability * 100) + '%.';
   return '<section class="practice-card" aria-label="Practice this concept"><div class="practice-header"><span class="eyebrow">A LITTLE CHECK-IN</span><span>No timer. No pressure.</span></div><form id="practice-form"><fieldset><legend id="question-title" tabindex="-1">' + escapeHtml(question.prompt) + '</legend><div class="answer-options">' +
     question.options.map((option, optionIndex) => '<label class="answer-option' + (answerRecord && optionIndex === question.answer ? ' correct' : '') + (answerRecord && optionIndex === answerRecord.selected && !answerRecord.correct ? ' incorrect' : '') + '"><input type="radio" name="answer" value="' + optionIndex + '"' + (answerRecord?.selected === optionIndex ? ' checked' : '') + (answerRecord ? ' disabled' : '') + ' required><span>' + escapeHtml(option) + '</span>' + (answerRecord && optionIndex === question.answer ? '<span class="sr-only"> — correct answer</span>' : '') + '</label>').join('') +
     '</div></fieldset>' + (!answerRecord ? '<div class="practice-actions"><span class="muted">You can always revisit the explanation.</span><button class="button primary" id="check-answer" type="submit">Check my understanding ' + icon('arrow') + '</button></div>' : '') + '<p id="practice-error" class="error-message" role="alert" hidden></p></form>' +
-    (answerRecord && feedback ? '<div class="feedback ' + (answerRecord.correct ? '' : 'incorrect') + '" id="practice-feedback" tabindex="-1"><h3>' + icon(answerRecord.correct ? 'check' : 'bulb') + (answerRecord.correct ? 'You’ve got this step.' : 'A useful moment to revisit.') + '</h3><p>' + escapeHtml(question.explanation) + '</p><details><summary>Why this next step?</summary><p>' + escapeHtml(feedback.reason) + '</p><p>Practice estimate: ' + Math.round(record.probability * 100) + '%. An illustrative model estimate based on answers, not reading speed. It is not a validated measure of ability.</p></details><div class="dialog-actions">' +
-      (unanswered ? '<button class="button secondary small" data-action="followup">' + (answerRecord.correct ? 'Try another question' : 'Try a follow-up') + icon('refresh') + '</button>' : '<span class="muted">You’ve tried all questions for this concept.</span>') +
-      '<button class="button primary small" data-action="next">' + (active.index === active.lesson.concepts.length - 1 ? 'See my journey' : 'Continue learning') + icon('arrow') + '</button></div></div>' : '') + '</section>';
+    (answerRecord && feedback ? '<div class="feedback ' + (answerRecord.correct ? '' : 'incorrect') + '" id="practice-feedback" tabindex="-1"><h3>' + icon(answerRecord.correct ? 'check' : 'bulb') + (answerRecord.correct ? 'You’ve got this step.' : 'A useful moment to revisit.') + '</h3><p>' + escapeHtml(question.explanation) + '</p><details><summary>Why this next step?</summary><p>' + escapeHtml(feedback.reason) + '</p><p>' + estimate + ' An illustrative model estimate based on answers, not reading speed. It is not a validated measure of ability.</p></details>' +
+      (!unanswered && !answerRecord.correct ? '<p>Re-read the steps above or check the source</p>' : '') + '<div class="dialog-actions">' +
+      (unanswered ? '<button class="button ' + (nextPrimary ? 'secondary' : 'primary') + ' small" data-action="followup">' + (answerRecord.correct ? 'Try another question' : 'Try a follow-up') + icon('refresh') + '</button>' : !answerRecord.correct ? '<button class="button primary small" data-action="review-source">Review steps and source ' + icon('book') + '</button>' : '<span class="muted">You’ve tried all questions for this concept.</span>') +
+      '<button class="button ' + (nextPrimary ? 'primary' : 'secondary') + ' small" data-action="next">' + (active.index === active.lesson.concepts.length - 1 ? 'See my journey' : 'Next small step') + icon('arrow') + '</button></div></div>' : '') + '</section>';
 }
 function renderSummary() {
   const active = session();
@@ -301,6 +307,15 @@ function nextConcept() {
     persist();
     location.hash = '#summary';
   } else moveConcept(active.index + 1);
+}
+function reviewExplanation() {
+  const active = session();
+  const record = recordFor(active, active.lesson.concepts[active.index]);
+  record.sourceOpen = true;
+  persist();
+  document.getElementById('source-details').open = true;
+  document.getElementById('concept-heading').focus();
+  announce('The source passage is open. Re-read the explanation above.');
 }
 let utterance;
 function stopSpeech() {
@@ -392,6 +407,7 @@ document.addEventListener('click', event => {
   else if (action === 'concept' || action === 'revisit') moveConcept(Number(button.dataset.index));
   else if (action === 'next') nextConcept();
   else if (action === 'previous') moveConcept(session().index - 1);
+  else if (action === 'review-source') reviewExplanation();
   else if (action === 'source') {
     const details = document.getElementById('source-details');
     details.open = true;
@@ -440,10 +456,11 @@ document.addEventListener('submit', async event => {
   checking = true;
   submit.disabled = true;
   submit.textContent = 'Checking…';
+  const previousProbability = record.probability;
   try {
-    const result = await api('/practice', {method:'POST',body:JSON.stringify({prior:record.probability,correct,attempts:record.answers.length})});
+    const result = await api('/practice', {method:'POST',body:JSON.stringify({prior:previousProbability,correct,attempts:record.answers.length})});
     record.probability = result.probability;
-    record.feedback = result;
+    record.feedback = {...result, previousProbability};
     delete record.stepOverride;
     record.answers.push({question:questionIndex,selected,correct,at:new Date().toISOString()});
     persist();
@@ -451,7 +468,8 @@ document.addEventListener('submit', async event => {
       renderReader();
       document.getElementById('practice-feedback').focus({preventScroll:false});
     }
-    announce(correct ? 'Correct. Your next learning step is ready.' : 'Let’s revisit this idea. A step-by-step explanation and follow-up are available.');
+    const hasFollowup = concept.questions.some((_, index) => !record.answers.some(answer => answer.question === index));
+    announce(correct ? 'Correct. Your next learning step is ready.' : hasFollowup ? 'Let’s revisit this idea. A step-by-step explanation and follow-up are available.' : 'Let’s revisit this idea. Re-read the steps above or check the source.');
   } catch (error) {
     if (routeAtSubmit === routeVersion) {
       const errorElement = document.getElementById('practice-error');
@@ -556,8 +574,13 @@ window.addEventListener('keydown', event => { if (event.key === 'Escape') stopSp
 async function initialize() {
   hydrateIcons();
   applyPreferences();
+  main.innerHTML = '<div class="initial-loading" role="status">Getting your learning space ready…</div>';
+  const wakingTimer = setTimeout(() => {
+    const loading = main.querySelector('.initial-loading');
+    if (loading) loading.textContent = 'Waking up the free server. The first visit can take up to a minute. Your lessons will appear automatically.';
+  }, 4000);
   try {
-    [catalog, health] = await Promise.all([api('/lessons'), api('/health')]);
+    [catalog, health] = await Promise.all([api('/lessons'), api('/health')]).finally(() => clearTimeout(wakingTimer));
     await route();
   } catch {
     main.innerHTML = '<div class="empty-error"><h2>Your space is taking a moment.</h2><p>The Python server could not be reached. Keep the app running and reload to reconnect. Your saved progress stays in this browser.</p><button class="button primary" id="retry-connection">Try again</button></div>';

@@ -1,8 +1,8 @@
 # Pace — current form answers
 
-**Verified delivery links:** public repository https://github.com/SXShadow/pace-neural-storm · live demo https://pace-neural-storm.onrender.com. Both are saved in the confirmed event entry; no video link exists. The hypothetical field guidance below was prepared before publication.
+**Verified delivery links:** public repository https://github.com/SXShadow/pace-neural-storm · live demo https://pace-neural-storm.onrender.com. Both were saved in the confirmed November 4 event entry. Descriptions below include the November 5 changes verified locally before publication; the delivery record dates the separate hosted checks.
 
-Copy only the answer beneath the matching field. These are prepared answers, not a claim that every field appears on the dashboard. Respect the actual form's character limits. Repository/demo/video link fields must use real verified public URLs; those links are currently pending.
+Copy only the answer beneath the matching field. These are prepared answers, not a claim that every field appears on the dashboard. Respect the actual form's character limits. Repository/demo link fields must use the actual public URLs above.
 
 ## Project title
 
@@ -33,7 +33,7 @@ The default Python pipeline groups source sentences, ranks representative senten
 
 Practice uses an illustrative Bayesian Knowledge Tracing model. An incorrect answer produces smaller steps and a different follow-up question. Correct answers lead to reinforcement or a recommendation to advance. The learner can inspect “Why this next step?”, revisit the source, or continue manually. Preferences, lessons and practice can be remembered in the browser; progress can be exported as JSON.
 
-Verification includes 38 passing Python tests, seven passing JavaScript tests, completed browser walkthroughs of all three prepared lessons, and a keyboard-only water-cycle journey. A small local evaluation on three development passages found all 13 generated quotes and 31 source-word questions grounded in their source. These checks measure functional behavior and source fidelity, not learning improvement or general model accuracy.
+Verification includes 43 passing Python tests, 21 passing JavaScript tests, completed browser walkthroughs of all three prepared lessons, and a keyboard-only water-cycle journey. The older 13/13 source-quote and 31/31 source-word-question results are grounding checks that hold by construction. A separate four-passage diagnostic audit flags answer leakage in 3/39 prompts and source co-occurrence in 30/39; these are not learning-improvement or accuracy measurements.
 
 Pace is an English-only prototype. Its Bayesian parameters are hand-selected, local questions can have weak distractors, and accessibility still needs testing with intended learners and specialists. The next step is a consent-based usability study and stronger pedagogical evaluation. The implementation and AI assistance are documented for reviewers.
 
@@ -51,7 +51,7 @@ The implementation needed to keep reading preferences, question drafts, source v
 
 ## Results / metrics
 
-38 Python tests and seven JavaScript tests pass. All three prepared lessons were completed during browser QA. Library and reader layouts were measured at 320, 360, 768, 1280 and 1600 pixels without page-level horizontal overflow. A keyboard-only water-cycle run reached the summary. On three original development passages, the local generator returned 13/13 source quotes, 13/13 extractive summaries and 31/31 source-word questions grounded in their input. Recorded median in-process generation times were 1.57–1.83 ms on the development Mac; these are not hosted latency or educational-effectiveness metrics.
+43 Python tests and 21 JavaScript tests pass, rerun locally on November 5. All three prepared lessons were completed during browser QA. Library and reader layouts were measured at 320, 360, 768, 1280 and 1600 pixels without page-level horizontal overflow. A keyboard-only water-cycle run reached the summary. On three original development passages, the historical local generator record contains 13/13 source quotes, 13/13 extractive summaries and 31/31 source-word questions: grounding checks that hold by construction. The new four-passage audit flags 3/39 answer leaks, 30/39 questions with a distractor in the source quote, and 9/117 distractors with neither a matching crude POS guess nor similar length. Recorded median in-process generation times were 1.57–1.83 ms on the development Mac; these are not hosted latency or educational-effectiveness metrics.
 
 ## Impact and intended users
 
@@ -71,11 +71,10 @@ Codex assisted with code, original educational samples, interface SVG/CSS illust
 
 ## If asked for “model accuracy”
 
-No educational prediction-accuracy benchmark has been established. Report the scoped functional and source-fidelity results above. Do not label 13/13 quotes, 31/31 word-recall questions or passing tests as 100% learning accuracy.
+No educational prediction-accuracy benchmark has been established. Report the scoped functional results and descriptive question flags above. The grounding checks hold by construction. Do not label 13/13 quotes, 31/31 word-recall questions or passing tests as 100% learning accuracy.
 
 ## Required and optional links
 
 Required public repository: supply the actual GitHub repository URL after publication and signed-out access verification.  
 Optional demo: supply the tested HTTPS app URL after deployment.  
-Optional video: supply an accessible recording URL after recording and playback verification.  
 Do not paste these instructions or the word “pending” into URL fields.

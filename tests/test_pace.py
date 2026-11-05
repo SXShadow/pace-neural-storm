@@ -67,6 +67,25 @@ def test_sample_questions_have_distinct_valid_answers_and_source(lesson):
             assert len(question.explanation) > 10
 
 
+@pytest.mark.parametrize("prompt, answer_index, correct_option, evidence", [
+    ("Which gas do plants use to make sugars?", 1, "Carbon dioxide", "make sugars from water and carbon dioxide"),
+    ("What is chlorophyll's role?", 0, "Absorb light", "chlorophyll, a pigment that absorbs light energy"),
+    ("Which pair is produced by photosynthesis?", 2, "Sugars and oxygen", "Photosynthesis produces sugars and releases oxygen"),
+    ("What happens when a wire disconnects in a simple circuit?", 1, "The current stops", "A gap in the path stops current"),
+    ("What does a simple circuit need for current to flow?", 0, "A complete conducting path", "a complete conducting path and a potential difference"),
+])
+def test_polished_sample_distractors_preserve_the_source_supported_answer(prompt, answer_index, correct_option, evidence):
+    matches = [(concept, question) for lesson in SAMPLES.values() for concept in lesson.concepts
+               for question in concept.questions if question.prompt == prompt]
+    assert len(matches) == 1
+    concept, question = matches[0]
+    assert question.answer == answer_index
+    assert question.options[question.answer] == correct_option
+    assert question.options.count(correct_option) == 1
+    assert len(set(question.options)) == len(question.options)
+    assert evidence in concept.source_quote
+
+
 def test_local_nlp_uses_actual_input_and_preserves_evidence():
     lesson = create_local_lesson(SOURCE, "Gravity notes")
     assert lesson.mode == "local_nlp"
