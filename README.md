@@ -2,7 +2,7 @@
 
 Pace lets learners choose a comfortable reading format and responds to practice answers with smaller steps, visible sources and an explained next step.
 
-[![MIT license](docs/badges/license.svg)](LICENSE) [![Python 3.12](docs/badges/python.svg)](#run-locally) [![38 Python and 7 JavaScript tests passing](docs/badges/tests.svg)](#validation)
+[![MIT license](docs/badges/license.svg)](LICENSE) [![Python 3.12](docs/badges/python.svg)](#run-locally) [![43 Python and 21 JavaScript tests passing](docs/badges/tests.svg)](#validation)
 
 **[Live demo → Open Pace](https://pace-neural-storm.onrender.com)**<br>
 Free hosting: the first load may take about a minute to wake, which is normal.
@@ -11,7 +11,7 @@ Free hosting: the first load may take about a minute to wake, which is normal.
 
 ![Pace learning library with a start action, three science lessons and reading preferences](docs/screenshots/library.jpg)
 
-**Tech stack:** FastAPI · scikit-learn TF-IDF · Bayesian Knowledge Tracing · vanilla JS · Render (Docker config included, untested)
+**Tech stack:** FastAPI · scikit-learn TF-IDF · Bayesian Knowledge Tracing · vanilla JS · Render
 
 [Documentation and evidence index](docs/README.md)
 
@@ -44,7 +44,7 @@ She can also continue manually; there is no timer or reading-speed score.
 | Losing track of the lesson | A concept outline, revisit controls and browser-saved practice when enabled | No account synchronization |
 | Small text or poor contrast | 16–28 px lesson text, three spacing settings and stronger contrast | A complete contrast/zoom audit remains pending |
 | Difficulty using a mouse | Native buttons, radio groups, skip link and keyboard focus management | A water-cycle keyboard journey was completed; switch access was not tested |
-| Screen-reader use | Semantic headings/landmarks, labelled controls and a live feedback region | VoiceOver/NVDA spoken output remains unverified |
+| Screen-reader use | Semantic headings/landmarks, labelled controls and a live feedback region | Semantic structure alone does not establish assistive-technology compatibility |
 | Cannot hear narration | Explanations, sources, questions and feedback remain visible as text | Narration is optional; text and practice do not depend on audio |
 
 This is a prototype of supported practice, not a validated assessment or a clinical tool.
@@ -107,9 +107,10 @@ python -m pip install -r requirements-dev.txt
 python -m pytest -q
 node --test tests/frontend.test.cjs
 python -m scripts.evaluate
+python -m scripts.evaluate_questions
 ~~~
 
-The last command rewrites [the evaluation report](docs/evaluation.json) with its actual timestamp and results. [Deployment instructions](docs/DEPLOYMENT.md) cover the Python service and optional Docker path.
+The evaluation commands write [the historical grounding/timing report](docs/evaluation.json) and [the question-diagnostic report](docs/evaluation_questions.json) with actual run timestamps. [Deployment instructions](docs/DEPLOYMENT.md) cover the Python service and optional container configuration. The [CI workflow](.github/workflows/ci.yml) defines Python 3.12 and Node 24 test jobs. The existing test badge reports local results; it is not a CI badge.
 
 ## Project structure
 
@@ -117,16 +118,17 @@ The last command rewrites [the evaluation report](docs/evaluation.json) with its
 app/                  Python APIs, local NLP, prepared lessons and adaptation
 static/               Browser library, reader, preferences and practice
 tests/                Python and JavaScript regression tests
-scripts/evaluate.py   Reproducible local source-fidelity evaluation
+scripts/evaluate.py   Reproducible local grounding/timing checks
+scripts/evaluate_questions.py  Question leakage and distractor diagnostics
 docs/                 Evidence, rules, demo script and screenshots
 requirements.lock     Verified runtime dependency versions
-Dockerfile            Optional container configuration; not run
+Dockerfile            Optional container configuration
 render.yaml           Render deployment configuration
 ~~~
 
 ## Validation
 
-**Current local suite: 38 Python + 7 JavaScript tests pass**, as of November 4, 2026. One upstream Starlette/httpx deprecation warning remains.
+**Current local suite: 43 Python + 21 JavaScript tests pass**, rerun on November 5, 2026. One upstream Starlette/httpx deprecation warning remains. The November 5 application polish and documentation/measurement changes were verified locally before publication; the hosting row below records checks of the November 4 deployment. The test badge reports local results, not CI status.
 
 | Check | Recorded result |
 | --- | --- |
@@ -135,27 +137,40 @@ render.yaml           Render deployment configuration
 | Responsive layouts | Library and reader measured at 320, 360, 768, 1280 and 1600 px without page-level horizontal overflow; a separate 390 px capture is included |
 | Saved state | Draft choices, source view, preferences and current concept survived reload in the documented checks |
 | Public hosting | HTTPS demo verified on November 4: wrong-answer scaffolding, source/why disclosures, correct follow-up, preferences/reload and custom lesson generation; health checks returned 200 |
-| Docker | **Docker not run**; the CLI was available but no running daemon was available |
 | Optional cloud adapter | Mocked contract tests only; no live-provider verification |
 
-The local generator evaluation used three original development passages, five runs each, on the development Mac:
+The historical November 3 generator report used three original development passages, five runs each, on the development Mac:
 
-| Passage | Concepts | Quotes found in source | Grounded source-word questions | Median generation |
+| Passage | Concepts | Quote grounding (by construction) | Question grounding (by construction) | Median generation |
 | --- | ---: | ---: | ---: | ---: |
 | Water cycle | 4 | 4/4 | 11/11 | 1.83 ms |
 | Plant energy | 4 | 4/4 | 11/11 | 1.61 ms |
 | Electricity | 5 | 5/5 | 9/9 | 1.57 ms |
 
-All 13 extractive summaries also matched their source. These are small functional source-fidelity checks, **not an external benchmark, model accuracy, hosted latency or evidence of improved learning**.
+The 13/13 source quotes, 13/13 extractive summaries and 31/31 restored source-word questions are **grounding checks that hold by construction**: the generator selects source spans/sentences and blanks a word from a selected sentence. They can catch implementation regressions, but do not establish question quality, model accuracy, hosted latency or improved learning.
+
+Question diagnostics were measured on November 5 across all generated questions from the three sample passages plus the original gravity demo input:
+
+| Input | Questions | Answer-leak rate | Ambiguity proxy | Neither POS nor length matches |
+| --- | ---: | ---: | ---: | ---: |
+| The water cycle | 11 | 1/11 (9.09%) | 8/11 (72.73%) | 0/33 (0.00%) |
+| How plants make food | 11 | 0/11 (0.00%) | 10/11 (90.91%) | 2/33 (6.06%) |
+| A spark of electricity | 9 | 0/9 (0.00%) | 6/9 (66.67%) | 7/27 (25.93%) |
+| Demo gravity passage | 8 | 2/8 (25.00%) | 6/8 (75.00%) | 0/24 (0.00%) |
+| **Total** | **39** | **3/39 (7.69%)** | **30/39 (76.92%)** | **9/117 (7.69%)** |
+
+Leakage means the blanked answer still occurs as a whole word anywhere in the prompt. The ambiguity proxy flags a question when any distractor occurs in the same concept's quote; source co-occurrence does not prove that it is another correct answer. The last column is per distractor, not per question: both its crude word-class guess differs from the answer's and its length differs by more than two characters. The word-class heuristic uses a declared verb list, suffix rules and a noun-like fallback; it is not a contextual POS tagger.
+
+These development-set diagnostics show limitations rather than educational accuracy. The [full JSON](docs/evaluation_questions.json) includes definitions, denominators, individual prompts, source quotes and every distractor; reproduce it with `python -m scripts.evaluate_questions`. No poor cases are filtered out.
+
 
 **Known limits**
 
-- Not verified: real screen-reader output, actual 200% zoom or physical phones.
+- Not verified: actual 200% zoom or physical phones.
 - Not verified: audible narration across devices or independent Chrome/Firefox/Safari runs.
 - Not verified: every failure/contrast state, hosted load behavior or learning outcomes.
-- Axe/Lighthouse were unavailable.
 
-[Detailed QA](docs/POLISH_REPORT.md), [keyboard/persistence follow-up](docs/READINESS.md) and [hosted verification](docs/DELIVERY_STATUS.md) contain the methods and limits. Earlier results are retained in [the build log](docs/BUILD_LOG.md).
+[Detailed QA](docs/POLISH_REPORT.md), [keyboard/persistence follow-up](docs/archive/READINESS.md) and [hosted verification](docs/DELIVERY_STATUS.md) contain the methods and limits. Earlier results are retained in [the build log](docs/BUILD_LOG.md).
 
 ## Screenshot gallery
 
@@ -191,5 +206,6 @@ Real local app captures; the summary contains QA practice, not learner-study res
 
 Codex was used for implementation, original sample content drafting, interface illustrations, debugging, test development, evaluation and documentation. The solo participant is Swayam Bangad; AI assistance is disclosed rather than counted as a human team member. No other AI assistant or external runtime AI provider was used in the tested default path.
 
-Original prepared lessons are labelled as prepared; local NLP is extractive rather than generative. Visuals use code-native SVG and CSS. The source is available under the [MIT license](LICENSE). [Development records](docs/BUILD_LOG.md) and [event rules](docs/NEURAL_STORM_BRIEF.md) preserve the distinction between advance discussion and implementation.
+Original prepared lessons are labelled as prepared; local NLP is extractive rather than generative. Visuals use code-native SVG and CSS. The source is available under the [MIT license](LICENSE).
 
+Built Nov 3-4, 2026 with Codex assistance; see docs/BUILD_LOG.md for dated records.
