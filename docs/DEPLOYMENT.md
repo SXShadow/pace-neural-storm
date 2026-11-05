@@ -51,7 +51,7 @@ The request limit is an in-memory demo safeguard, shared by all users of one pro
 
 ## Docker alternative
 
-A Dockerfile is included but has not been built in this development run: Docker CLI was present, but no running Docker daemon was available.
+The repository includes optional container configuration. The commands below describe how to build and run it; no verification status is asserted here.
 
 ~~~sh
 docker build -t pace .

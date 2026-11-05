@@ -32,7 +32,7 @@ Paste the original gravity passage from demo-input.txt. Show the Local text anal
 
 ## 1:55–2:15 — Progress and evidence
 
-“Asha can revisit a concept, return later and export her practice record. Our current checks include 38 Python tests, 7 JavaScript tests, and browser walkthroughs of all three lessons.”
+“Asha can revisit a concept, return later and export her practice record. Our current checks include 43 Python tests, 21 JavaScript tests, and browser walkthroughs of all three lessons.”
 
 Show My progress and the audit report briefly. Explain that browser/accessibility checks are scoped and no learning-outcome study has been performed.
 

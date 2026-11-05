@@ -1,6 +1,6 @@
 # Pace polish and verification — November 4, 2026
 
-Follow-up: [the final readiness check](READINESS.md) verifies the previously pending duplicate-lesson, remembering-off, exact-scroll and full water-cycle keyboard checks. Other limitations below remain as recorded.
+Follow-up: [the final readiness check](archive/READINESS.md) verifies the previously pending duplicate-lesson, remembering-off, exact-scroll and full water-cycle keyboard checks. Other limitations below remain as recorded.
 
 Status: small fixes applied locally; 38 Python tests and 7 JavaScript tests pass. No deployment, publishing, Git initialization or competition submission performed. This report records the completed checks and the remaining manual checks; it is not an accessibility certification.
 
