@@ -7,6 +7,8 @@ Pace lets learners choose a comfortable reading format and responds to practice 
 **[Live demo → Open Pace](https://pace-neural-storm.onrender.com)**<br>
 Free hosting: the first load may take about a minute to wake, which is normal.
 
+**For judges:** Open the live demo—no login or signup is required. Start with any prepared lesson.
+
 **Swayam Bangad (solo) · HI-03 Adaptive Learning for Students with Disabilities · Neural Storm 2026**
 
 ![Pace learning library with a start action, three science lessons and reading preferences](docs/screenshots/library.jpg)
